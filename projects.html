@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projects — Kundan Vangapandu</title>
+  <meta name="description"
+    content="Explore data science and ML projects built by Vangapandu Kundan — including Threat Detection AI, AI Code Reviewer, and more.">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+
+  <!-- Topbar -->
+  <header class="topbar" id="topbar">
+    <a href="index.html" class="logo">K<span>.</span></a>
+    <div class="hamburger" id="hamburger" role="button" aria-label="Open navigation" tabindex="0">
+      <span></span><span></span><span></span>
+    </div>
+  </header>
+
+  <div class="nav-backdrop" id="navBackdrop"></div>
+
+  <nav class="nav-menu" id="navMenu">
+    <button class="close-menu" id="closeMenu"><i class="fa-solid fa-xmark"></i></button>
+    <p class="nav-label">Navigation</p>
+    <ul class="nav-links">
+      <li><a href="index.html" id="nav-home"><span class="nav-icon"><i class="fa-solid fa-house"></i></span> Home</a>
+      </li>
+      <li><a href="about.html" id="nav-about"><span class="nav-icon"><i class="fa-solid fa-user"></i></span> About</a>
+      </li>
+      <li><a href="projects.html" class="active" id="nav-projects"><span class="nav-icon"><i
+              class="fa-solid fa-code"></i></span> Projects</a></li>
+      <li><a href="certificates.html" id="nav-certs"><span class="nav-icon"><i class="fa-solid fa-award"></i></span>
+          Certificates</a></li>
+      <li><a href="https://github.com/vangapandukundan" target="_blank" rel="noopener" id="nav-gh"><span
+            class="nav-icon"><i class="fa-brands fa-github"></i></span> GitHub</a></li>
+      <li><a href="https://www.linkedin.com/in/kundan-student" target="_blank" rel="noopener" id="nav-li"><span
+            class="nav-icon"><i class="fa-brands fa-linkedin"></i></span> LinkedIn</a></li>
+      <li><a href="contact.html" id="nav-contact"><span class="nav-icon"><i class="fa-solid fa-envelope"></i></span>
+          Contact</a></li>
+    </ul>
+    <div class="nav-social">
+      <a href="https://github.com/vangapandukundan" target="_blank" rel="noopener"><i class="fab fa-github"></i></a>
+      <a href="https://www.linkedin.com/in/kundan-student" target="_blank" rel="noopener"><i
+          class="fab fa-linkedin"></i></a>
+      <a href="mailto:vangapandukundan@gmail.com"><i class="fas fa-envelope"></i></a>
+    </div>
+  </nav>
+
+  <main>
+    <!-- Page Header -->
+    <section class="page-header">
+      <div class="page-header-content">
+        <span class="section-badge"><i class="fas fa-folder-open"></i> My Work</span>
+        <h1 class="section-title" style="margin-top: 10px;">Projects &amp; <span class="gradient-text">Creations</span>
+        </h1>
+        <p class="section-subtitle" style="margin: 16px auto 0; text-align: center;">
+          Real-world ML, data science, and development projects — built to solve problems.
+        </p>
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section class="projects-section" style="padding-top: 60px;">
+      <div class="projects-container">
+
+        <!-- Filters -->
+        <div class="reveal" style="margin-bottom: 48px; display: flex; flex-wrap: wrap; gap: 8px;">
+          <button class="filter-tab active" data-filter="all" id="filter-all">All Projects</button>
+          <button class="filter-tab" data-filter="ml" id="filter-ml">Machine Learning</button>
+          <button class="filter-tab" data-filter="nlp" id="filter-nlp">NLP</button>
+          <button class="filter-tab" data-filter="web" id="filter-web">Web Tools</button>
+        </div>
+
+        <div class="projects-grid" id="projects-grid">
+
+          <!-- Project 1: Threat Detection AI -->
+          <div class="project-card reveal reveal-delay-1" data-category="ml">
+            <div class="project-card-img">
+              <div class="proj-gradient"
+                style="background: linear-gradient(135deg, rgba(99,102,241,0.25) 0%, rgba(167,139,250,0.25) 100%);">
+              </div>
+              <i class="fas fa-shield-alt proj-icon" style="color: #818cf8;"></i>
+            </div>
+            <div class="project-card-body">
+              <div class="project-number">PROJECT 01 — Machine Learning</div>
+              <h2 class="project-title">Threat Detection AI</h2>
+              <p class="project-desc">
+                Trained a classification model to detect cybersecurity threats from network logs. Utilizes feature
+                engineering, model evaluation, and a Streamlit dashboard for real-time threat scoring and visualization.
+              </p>
+              <div class="project-tech">
+                <span class="tech-pill">Python</span>
+                <span class="tech-pill">Scikit-learn</span>
+                <span class="tech-pill">Pandas</span>
+                <span class="tech-pill">Streamlit</span>
+                <span class="tech-pill">Matplotlib</span>
+              </div>
+              <div class="project-links">
+                <a href="https://github.com/vangapandukundan/Threat-Detection-AI" target="_blank" rel="noopener"
+                  class="proj-link proj-link-primary" id="proj1-github">
+                  <i class="fab fa-github"></i> GitHub
+                </a>
+                <a href="https://threat-detection-ai-sfmyghe6azj9pr29x8yaon.streamlit.app/" target="_blank"
+                  rel="noopener" class="proj-link" id="proj1-demo">
+                  <i class="fas fa-external-link-alt"></i> Live Demo
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 2: AI Code Reviewer -->
+          <div class="project-card reveal reveal-delay-2" data-category="ml">
+            <div class="project-card-img">
+              <div class="proj-gradient"
+                style="background: linear-gradient(135deg, rgba(52,211,153,0.25) 0%, rgba(99,102,241,0.25) 100%);">
+              </div>
+              <i class="fas fa-code-branch proj-icon" style="color: #34d399;"></i>
+            </div>
+            <div class="project-card-body">
+              <div class="project-number">PROJECT 02 — Developer Tools</div>
+              <h2 class="project-title">AI Code Reviewer</h2>
+              <p class="project-desc">
+                An automated code quality analysis tool built during the Elevate Labs internship. Integrates Flake8
+                static analysis with AI-powered insights to provide actionable code improvement suggestions.
+              </p>
+              <div class="project-tech">
+                <span class="tech-pill">Python</span>
+                <span class="tech-pill">Streamlit</span>
+                <span class="tech-pill">Flake8</span>
+                <span class="tech-pill">AI Integration</span>
+              </div>
+              <div class="project-links">
+                <a href="https://github.com/kvangapa-gif/ELEVATE-LABS-INTERNSHIP-PROJECT-PHASE-" target="_blank"
+                  rel="noopener" class="proj-link proj-link-primary" id="proj2-github">
+                  <i class="fab fa-github"></i> GitHub
+                </a>
+                <a href="https://jgmqxoaptndlsravfmjpxg.streamlit.app/" target="_blank" rel="noopener" class="proj-link"
+                  id="proj2-demo">
+                  <i class="fas fa-external-link-alt"></i> Live Demo
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 3: NLP Sentiment Analysis -->
+          <div class="project-card reveal reveal-delay-3" data-category="nlp">
+            <div class="project-card-img">
+              <div class="proj-gradient"
+                style="background: linear-gradient(135deg, rgba(251,191,36,0.25) 0%, rgba(244,114,182,0.25) 100%);">
+              </div>
+              <i class="fas fa-comments proj-icon" style="color: #fbbf24;"></i>
+            </div>
+            <div class="project-card-body">
+              <div class="project-number">PROJECT 03 — NLP</div>
+              <h2 class="project-title">NLP Sentiment Analysis</h2>
+              <p class="project-desc">
+                Real-time sentiment analysis tool for social media data using Natural Language Processing. Classifies
+                text as positive, negative, or neutral and visualizes public opinion trends interactively.
+              </p>
+              <div class="project-tech">
+                <span class="tech-pill">Python</span>
+                <span class="tech-pill">NLTK</span>
+                <span class="tech-pill">React</span>
+                <span class="tech-pill">Plotly</span>
+              </div>
+              <div class="project-links">
+                <a href="https://github.com/vangapandukundan" target="_blank" rel="noopener"
+                  class="proj-link proj-link-primary" id="proj3-github">
+                  <i class="fab fa-github"></i> GitHub
+                </a>
+                <span class="proj-link" style="opacity:0.5; cursor: default;" title="Coming soon">
+                  <i class="fas fa-clock"></i> Coming Soon
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 4: News Summarizer -->
+          <div class="project-card reveal reveal-delay-1" data-category="nlp">
+            <div class="project-card-img">
+              <div class="proj-gradient"
+                style="background: linear-gradient(135deg, rgba(167,139,250,0.25) 0%, rgba(52,211,153,0.25) 100%);">
+              </div>
+              <i class="fas fa-newspaper proj-icon" style="color: #a78bfa;"></i>
+            </div>
+            <div class="project-card-body">
+              <div class="project-number">PROJECT 04 — NLP</div>
+              <h2 class="project-title">News Summarizer</h2>
+              <p class="project-desc">
+                Automated news article summarization tool using spaCy and extractive NLP techniques. Condenses long
+                articles into concise summaries, backed by a MongoDB database for article storage.
+              </p>
+              <div class="project-tech">
+                <span class="tech-pill">Python</span>
+                <span class="tech-pill">spaCy</span>
+                <span class="tech-pill">MongoDB</span>
+                <span class="tech-pill">NLP</span>
+              </div>
+              <div class="project-links">
+                <a href="https://github.com/vangapandukundan" target="_blank" rel="noopener"
+                  class="proj-link proj-link-primary" id="proj4-github">
+                  <i class="fab fa-github"></i> GitHub
+                </a>
+                <span class="proj-link" style="opacity:0.5; cursor: default;">
+                  <i class="fas fa-clock"></i> Coming Soon
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 5: Image Resizer -->
+          <div class="project-card reveal reveal-delay-2" data-category="web">
+            <div class="project-card-img">
+              <div class="proj-gradient"
+                style="background: linear-gradient(135deg, rgba(244,114,182,0.25) 0%, rgba(251,191,36,0.25) 100%);">
+              </div>
+              <i class="fas fa-image proj-icon" style="color: #f472b6;"></i>
+            </div>
+            <div class="project-card-body">
+              <div class="project-number">PROJECT 05 — Web Tool</div>
+              <h2 class="project-title">Browser Image Resizer</h2>
+              <p class="project-desc">
+                A fully client-side image resizing tool built with HTML5 Canvas API and vanilla JavaScript. Users can
+                upload and resize images instantly without any server-side processing or dependencies.
+              </p>
+              <div class="project-tech">
+                <span class="tech-pill">HTML5 Canvas</span>
+                <span class="tech-pill">JavaScript</span>
+                <span class="tech-pill">CSS3</span>
+              </div>
+              <div class="project-links">
+                <a href="https://github.com/vangapandukundan/Image_Resizer/blob/main/index.html" target="_blank"
+                  rel="noopener" class="proj-link proj-link-primary" id="proj5-github">
+                  <i class="fab fa-github"></i> GitHub
+                </a>
+                <a href="https://vangapandukundan.github.io/Image_Resizer/" target="_blank" rel="noopener"
+                  class="proj-link" id="proj5-demo">
+                  <i class="fas fa-external-link-alt"></i> Live Demo
+                </a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- CTA -->
+        <div class="reveal"
+          style="text-align: center; margin-top: 60px; padding: 60px 40px; background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-xl);">
+          <h3
+            style="font-family: 'Space Grotesk', sans-serif; font-size: 1.4rem; margin-bottom: 8px; color: var(--text-primary);">
+            Want to collaborate?</h3>
+          <p style="color: var(--text-secondary); margin-bottom: 24px; font-size: 0.9rem;">I'm always open to
+            interesting projects and opportunities.</p>
+          <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+            <a href="https://github.com/vangapandukundan" target="_blank" class="btn btn-outline"
+              id="github-profile-btn">
+              <i class="fab fa-github"></i> GitHub Profile
+            </a>
+            <a href="contact.html" class="btn btn-primary" id="cta-contact-btn">
+              <i class="fas fa-envelope"></i> Get In Touch
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-logo">K<span>.</span></div>
+      <p class="footer-text">© 2025 Vangapandu Kundan. Made with <span>♥</span> in Hyderabad.</p>
+      <div class="footer-links">
+        <a href="about.html">About</a>
+        <a href="certificates.html">Certificates</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/script.js"></script>
+  <script>
+    // Project filter
+    document.addEventListener('DOMContentLoaded', () => {
+      const tabs = document.querySelectorAll('.filter-tab');
+      const cards = document.querySelectorAll('#projects-grid .project-card');
+
+      tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+          tabs.forEach(t => t.classList.remove('active'));
+          tab.classList.add('active');
+          const filter = tab.dataset.filter;
+          cards.forEach(card => {
+            const cat = card.dataset.category;
+            if (filter === 'all' || cat === filter) {
+              card.style.display = 'flex';
+              card.style.opacity = '1';
+            } else {
+              card.style.display = 'none';
+            }
+          });
+        });
+      });
+    });
+  </script>
+</body>
+
+</html>
