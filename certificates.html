@@ -1,183 +1,509 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Certificates — Kundan Vangapandu</title>
-  <meta name="description" content="Certifications earned by Vangapandu Kundan in Data Science, Machine Learning, and Python.">
+  <title>Certificates — Vangapandu Kundan · Data Scientist</title>
+  <meta name="description" content="Professional certifications earned by Vangapandu Kundan in Data Science, Machine Learning, and Python development.">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* ── Page-specific ── */
+    .page-nav-spacer { height: var(--nav-h); }
+
+    /* Page Hero */
+    .page-hero {
+      padding: 80px 0 60px;
+      position: relative;
+      z-index: 1;
+      border-bottom: 1px solid var(--border);
+    }
+    .page-hero-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 40px;
+      text-align: center;
+    }
+    .page-hero h1 {
+      font-family: 'DM Serif Display', Georgia, serif;
+      font-size: clamp(2.4rem, 5vw, 4rem);
+      font-weight: 400;
+      color: var(--white);
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      margin: 14px 0 16px;
+    }
+    .page-hero h1 em { font-style: italic; color: var(--accent); }
+    .page-hero p {
+      color: var(--text-2);
+      font-size: 1rem;
+      line-height: 1.75;
+      max-width: 520px;
+      margin: 0 auto;
+    }
+
+    /* Stats row */
+    .stats-row {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 40px;
+    }
+    .stat-bubble {
+      background: rgba(13,18,32,0.7);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px 32px;
+      text-align: center;
+      backdrop-filter: blur(8px);
+      min-width: 130px;
+    }
+    .stat-bubble-num {
+      font-family: 'DM Serif Display', Georgia, serif;
+      font-size: 2.2rem;
+      font-weight: 400;
+      color: var(--accent);
+      line-height: 1;
+    }
+    .stat-bubble-lbl {
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: var(--text-3);
+      text-transform: uppercase;
+      letter-spacing: 0.10em;
+      margin-top: 6px;
+    }
+
+    /* Content */
+    .certs-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 60px 40px 80px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Cert grid */
+    .certs-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    /* Cert Card */
+    .cert-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 28px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      transition: all 0.32s var(--ease);
+      text-decoration: none;
+      color: inherit;
+      position: relative;
+      overflow: hidden;
+    }
+    .cert-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      opacity: 0;
+      transition: opacity 0.3s var(--ease);
+    }
+    .cert-card.c-indigo::before  { background: linear-gradient(90deg, #6366F1, #818cf8); }
+    .cert-card.c-green::before   { background: linear-gradient(90deg, #10B981, #34d399); }
+    .cert-card.c-amber::before   { background: linear-gradient(90deg, var(--accent), #D4B65A); }
+    .cert-card.c-violet::before  { background: linear-gradient(90deg, #8B5CF6, #a78bfa); }
+    .cert-card.c-pink::before    { background: linear-gradient(90deg, #EC4899, #f472b6); }
+    .cert-card.c-sky::before     { background: linear-gradient(90deg, #0EA5E9, #38bdf8); }
+
+    .cert-card:hover {
+      border-color: rgba(201,168,76,0.22);
+      transform: translateY(-5px);
+      box-shadow: 0 20px 45px rgba(0,0,0,0.45);
+    }
+    .cert-card:hover::before { opacity: 1; }
+
+    .cert-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      margin-bottom: 18px;
+    }
+    .cert-icon {
+      width: 46px; height: 46px;
+      border-radius: var(--radius-sm);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+    .cert-icon.c-indigo  { background: rgba(99,102,241,0.12);  color: #818cf8; }
+    .cert-icon.c-green   { background: rgba(16,185,129,0.12);  color: #10B981; }
+    .cert-icon.c-amber   { background: rgba(201,168,76,0.12);  color: var(--accent); }
+    .cert-icon.c-violet  { background: rgba(139,92,246,0.12);  color: #a78bfa; }
+    .cert-icon.c-pink    { background: rgba(236,72,153,0.12);  color: #f472b6; }
+    .cert-icon.c-sky     { background: rgba(14,165,233,0.12);  color: #38bdf8; }
+
+    .cert-year-tag {
+      padding: 3px 10px;
+      border-radius: var(--radius-pill);
+      font-size: 0.68rem;
+      font-weight: 700;
+      color: var(--text-3);
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border);
+      letter-spacing: 0.04em;
+    }
+
+    .cert-title {
+      font-family: 'DM Serif Display', Georgia, serif;
+      font-size: 1.08rem;
+      font-weight: 400;
+      color: var(--white);
+      line-height: 1.35;
+      margin-bottom: 8px;
+    }
+    .cert-issuer {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.78rem;
+      color: var(--text-2);
+      font-weight: 500;
+      margin-bottom: 20px;
+    }
+    .cert-issuer i { color: var(--accent); font-size: 0.72rem; }
+
+    .cert-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.80rem;
+      font-weight: 600;
+      color: var(--accent);
+      transition: gap 0.2s, color 0.2s;
+      margin-top: auto;
+      letter-spacing: 0.01em;
+      text-decoration: none;
+    }
+    .cert-link:hover { gap: 10px; color: #D4B65A; }
+
+    /* CTA */
+    .cta-band {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 40px 80px;
+      position: relative;
+      z-index: 1;
+    }
+    .cta-inner {
+      background: linear-gradient(135deg, rgba(201,168,76,0.06), rgba(99,102,241,0.06));
+      border: 1px solid rgba(201,168,76,0.18);
+      border-radius: var(--radius-lg);
+      padding: 56px 40px;
+      text-align: center;
+    }
+    .cta-inner h3 {
+      font-family: 'DM Serif Display', Georgia, serif;
+      font-size: 1.7rem;
+      font-weight: 400;
+      color: var(--white);
+      margin-bottom: 10px;
+    }
+    .cta-inner p { color: var(--text-2); font-size: 0.93rem; margin-bottom: 28px; }
+    .cta-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+
+    /* Footer */
+    .page-footer {
+      border-top: 1px solid var(--border);
+      padding: 28px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+      position: relative;
+      z-index: 1;
+    }
+    .pf-logo { font-size: 1rem; font-weight: 800; color: var(--text); letter-spacing: -0.01em; }
+    .pf-logo span { color: var(--accent); }
+    .pf-copy { font-size: 0.78rem; color: var(--text-3); }
+    .pf-links { display: flex; gap: 18px; }
+    .pf-links a { font-size: 0.78rem; color: var(--text-3); transition: color 0.2s; }
+    .pf-links a:hover { color: var(--accent); }
+
+    /* ── Tablet ── */
+    @media (max-width: 960px) {
+      .certs-grid { grid-template-columns: repeat(2, 1fr); }
+      .stats-row { gap: 12px; }
+    }
+
+    /* ── Large phone / landscape ── */
+    @media (max-width: 768px) {
+      .hire-btn { display: none !important; }
+      .page-hero { padding: 56px 0 36px; }
+      .page-hero-inner { padding: 0 20px; }
+      .stats-row { margin-top: 28px; }
+      .stat-bubble { min-width: 100px; padding: 16px 20px; }
+      .stat-bubble-num { font-size: 1.9rem; }
+      .certs-content { padding: 48px 20px 60px; }
+      .cta-band { padding: 0 20px 60px; }
+      .cta-inner { padding: 40px 24px; }
+      .page-footer { padding: 20px; flex-direction: column; text-align: center; }
+      .pf-links { justify-content: center; flex-wrap: wrap; gap: 14px; }
+    }
+
+    /* ── Small phone / Portrait ── */
+    @media (max-width: 600px) {
+      .page-hero { padding: 40px 0 28px; }
+      .page-hero-inner { padding: 0 16px; }
+      .page-hero p { font-size: 0.9rem; }
+      .stats-row { gap: 8px; }
+      .stat-bubble { min-width: 80px; padding: 14px 16px; }
+      .stat-bubble-num { font-size: 1.65rem; }
+      .stat-bubble-lbl { font-size: 0.66rem; }
+      .certs-grid { grid-template-columns: 1fr; gap: 12px; }
+      .certs-content { padding: 36px 16px 48px; }
+      .cert-card { padding: 22px 18px; }
+      .cert-title { font-size: 1rem; }
+      .cert-issuer { font-size: 0.75rem; }
+      .cta-band { padding: 0 16px 48px; }
+      .cta-inner { padding: 30px 16px; }
+      .cta-inner h3 { font-size: 1.35rem; }
+      .cta-inner p { font-size: 0.87rem; }
+      .cta-btns { flex-direction: column; align-items: center; }
+      .cta-btns .btn-primary, .cta-btns .btn-ghost { width: 100%; justify-content: center; }
+      .page-footer { padding: 16px; }
+    }
+  </style>
 </head>
+
 <body>
 
-  <!-- Topbar -->
-  <header class="topbar" id="topbar">
-    <a href="index.html" class="logo">K<span>.</span></a>
-    <div class="hamburger" id="hamburger" role="button" aria-label="Open navigation" tabindex="0">
-      <span></span><span></span><span></span>
+  <!-- Custom Cursor -->
+  <div id="cursor"></div>
+  <div id="cursor-dot"></div>
+
+  <!-- ═══ NAVBAR ═══════════════════════════════════════════════ -->
+  <header class="navbar" id="navbar">
+    <a href="index.html" class="nav-logo" id="nav-logo">
+      <div class="logo-avatar">VK</div>
+      Vangapandu Kundan
+    </a>
+
+    <div class="nav-links">
+      <a href="index.html" id="nl-home">Home</a>
+      <a href="projects.html" id="nl-projects">Projects</a>
+      <a href="certificates.html" class="active" id="nl-certs">Certificates</a>
+      <a href="index.html#skills" id="nl-skills">Skills</a>
+      <a href="index.html#about" id="nl-about">About</a>
+      <a href="contact.html" id="nl-contact">Contact</a>
+    </div>
+
+    <div class="nav-right">
+      <!-- Theme Selector -->
+      <div class="theme-menu-container">
+        <button class="theme-toggle-btn" id="theme-toggle-btn" aria-label="Change Accent Color">
+          <i class="fas fa-palette"></i>
+        </button>
+        <div class="theme-dropdown" id="theme-dropdown">
+          <button class="theme-opt-color gold active" data-color="gold" title="Royal Gold"></button>
+          <button class="theme-opt-color purple" data-color="purple" title="Electric Indigo"></button>
+          <button class="theme-opt-color pink" data-color="pink" title="Cyber Pink"></button>
+          <button class="theme-opt-color green" data-color="green" title="Neon Emerald"></button>
+          <button class="theme-opt-color blue" data-color="blue" title="Sky Blue"></button>
+        </div>
+      </div>
+
+      <a href="files/Vangapandu_Kundan_Resume.pdf" download class="hire-btn" id="hire-btn">
+        <i class="fas fa-download"></i> Download CV
+      </a>
+      <div class="hamburger" id="hamburger" role="button" tabindex="0" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </div>
     </div>
   </header>
 
+  <!-- Mobile Drawer -->
   <div class="nav-backdrop" id="navBackdrop"></div>
-
-  <nav class="nav-menu" id="navMenu">
-    <button class="close-menu" id="closeMenu"><i class="fa-solid fa-xmark"></i></button>
-    <p class="nav-label">Navigation</p>
-    <ul class="nav-links">
-      <li><a href="index.html" id="nav-home"><span class="nav-icon"><i class="fa-solid fa-house"></i></span> Home</a></li>
-      <li><a href="about.html" id="nav-about"><span class="nav-icon"><i class="fa-solid fa-user"></i></span> About</a></li>
-      <li><a href="projects.html" id="nav-projects"><span class="nav-icon"><i class="fa-solid fa-code"></i></span> Projects</a></li>
-      <li><a href="certificates.html" class="active" id="nav-certs"><span class="nav-icon"><i class="fa-solid fa-award"></i></span> Certificates</a></li>
-      <li><a href="https://github.com/vangapandukundan" target="_blank" rel="noopener" id="nav-gh"><span class="nav-icon"><i class="fa-brands fa-github"></i></span> GitHub</a></li>
-      <li><a href="https://www.linkedin.com/in/kundan-student" target="_blank" rel="noopener" id="nav-li"><span class="nav-icon"><i class="fa-brands fa-linkedin"></i></span> LinkedIn</a></li>
-      <li><a href="contact.html" id="nav-contact"><span class="nav-icon"><i class="fa-solid fa-envelope"></i></span> Contact</a></li>
-    </ul>
-    <div class="nav-social">
-      <a href="https://github.com/vangapandukundan" target="_blank" rel="noopener"><i class="fab fa-github"></i></a>
-      <a href="https://www.linkedin.com/in/kundan-student" target="_blank" rel="noopener"><i class="fab fa-linkedin"></i></a>
-      <a href="mailto:vangapandukundan@gmail.com"><i class="fas fa-envelope"></i></a>
-    </div>
+  <nav class="mobile-nav" id="mobileNav">
+    <button class="mobile-close" id="mobileClose"><i class="fas fa-xmark"></i></button>
+    <a href="index.html">Home</a>
+    <a href="projects.html">Projects</a>
+    <a href="certificates.html" class="active">Certificates</a>
+    <a href="index.html#skills">Skills</a>
+    <a href="index.html#about">About</a>
+    <a href="contact.html">Contact</a>
+    <a href="files/Vangapandu_Kundan_Resume.pdf" download
+      style="margin-top:20px; background:var(--accent); color:#080C14; padding:13px 20px; border-radius:100px; text-align:center; font-weight:700;">
+      <i class="fas fa-download"></i> Download CV
+    </a>
   </nav>
 
-  <main>
-    <!-- Page Header -->
-    <section class="page-header">
-      <div class="page-header-content">
-        <span class="section-badge"><i class="fas fa-award"></i> Achievements</span>
-        <h1 class="section-title" style="margin-top: 10px;">Certifications &amp; <span class="gradient-text">Credentials</span></h1>
-        <p class="section-subtitle" style="margin: 16px auto 0; text-align: center;">
-          Professional certificates earned through coursework, internships, and industry programs.
-        </p>
-      </div>
-    </section>
+  <div class="page-nav-spacer"></div>
 
-    <!-- Certificates -->
-    <section class="certificates-section" style="padding-top: 60px;">
-      <div class="certs-container">
+  <!-- Page Hero -->
+  <section class="page-hero">
+    <div class="page-hero-inner reveal">
+      <div class="section-badge"><span class="dot"></span> Achievements</div>
+      <h1>Certifications &amp; <em>Credentials</em></h1>
+      <p>Professional certificates earned through coursework, internships, and industry programs.</p>
 
-        <!-- Stats row -->
-        <div class="reveal" style="display: flex; gap: 24px; margin-bottom: 56px; flex-wrap: wrap;">
-          <div style="flex: 1; min-width: 160px; background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 24px; text-align: center;">
-            <div style="font-family: 'Space Grotesk', sans-serif; font-size: 2.5rem; font-weight: 800; background: var(--gradient-1); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; line-height: 1;">5</div>
-            <div style="color: var(--text-muted); font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; margin-top: 6px;">Total Certificates</div>
-          </div>
-          <div style="flex: 1; min-width: 160px; background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 24px; text-align: center;">
-            <div style="font-family: 'Space Grotesk', sans-serif; font-size: 2.5rem; font-weight: 800; background: var(--gradient-1); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; line-height: 1;">2</div>
-            <div style="color: var(--text-muted); font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; margin-top: 6px;">Internships</div>
-          </div>
-          <div style="flex: 1; min-width: 160px; background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 24px; text-align: center;">
-            <div style="font-family: 'Space Grotesk', sans-serif; font-size: 2.5rem; font-weight: 800; background: var(--gradient-1); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; line-height: 1;">2025</div>
-            <div style="color: var(--text-muted); font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; margin-top: 6px;">Latest Year</div>
-          </div>
+      <!-- Stats -->
+      <div class="stats-row">
+        <div class="stat-bubble">
+          <div class="stat-bubble-num">8</div>
+          <div class="stat-bubble-lbl">Certificates</div>
         </div>
-
-        <div class="certs-grid">
-
-          <!-- Cert 1: Python for DS -->
-          <div class="cert-card reveal reveal-delay-1" id="cert-python-ds">
-            <div class="cert-card-top">
-              <div class="cert-icon-box purple">
-                <i class="fab fa-python"></i>
-              </div>
-              <div class="cert-year">2025</div>
-            </div>
-            <h3 class="cert-title">Python for Data Science, AI &amp; Development</h3>
-            <p class="cert-issuer"><i class="fas fa-building" style="margin-right: 6px; color: var(--accent); font-size: 0.75rem;"></i> Coursera · IBM</p>
-            <a href="https://www.coursera.org/account/accomplishments/certificate/R5BPXGAG0A8M" target="_blank" rel="noopener" class="cert-link" id="cert1-view">
-              View Certificate <i class="fas fa-arrow-right"></i>
-            </a>
-          </div>
-
-          <!-- Cert 2: ML with Python -->
-          <div class="cert-card reveal reveal-delay-2" id="cert-ml-python">
-            <div class="cert-card-top">
-              <div class="cert-icon-box green">
-                <i class="fas fa-brain"></i>
-              </div>
-              <div class="cert-year">2025</div>
-            </div>
-            <h3 class="cert-title">Machine Learning with Python</h3>
-            <p class="cert-issuer"><i class="fas fa-building" style="margin-right: 6px; color: var(--accent); font-size: 0.75rem;"></i> Coursera · IBM</p>
-            <a href="https://www.coursera.org/account/accomplishments/certificate/1XDVOQ9C3COA" target="_blank" rel="noopener" class="cert-link" id="cert2-view">
-              View Certificate <i class="fas fa-arrow-right"></i>
-            </a>
-          </div>
-
-          <!-- Cert 3: Intraniz -->
-          <div class="cert-card reveal reveal-delay-3" id="cert-intraniz">
-            <div class="cert-card-top">
-              <div class="cert-icon-box amber">
-                <i class="fas fa-chart-bar"></i>
-              </div>
-              <div class="cert-year">2025</div>
-            </div>
-            <h3 class="cert-title">Data Science Internship</h3>
-            <p class="cert-issuer"><i class="fas fa-building" style="margin-right: 6px; color: var(--accent); font-size: 0.75rem;"></i> Intraniz</p>
-            <a href="certificates/Internship Certificate.pdf" target="_blank" class="cert-link" id="cert3-view">
-              View Certificate <i class="fas fa-arrow-right"></i>
-            </a>
-          </div>
-
-          <!-- Cert 4: Elevate Labs -->
-          <div class="cert-card reveal reveal-delay-1" id="cert-elevate">
-            <div class="cert-card-top">
-              <div class="cert-icon-box indigo">
-                <i class="fas fa-code"></i>
-              </div>
-              <div class="cert-year">2025</div>
-            </div>
-            <h3 class="cert-title">Python Developer Internship</h3>
-            <p class="cert-issuer"><i class="fas fa-building" style="margin-right: 6px; color: var(--accent); font-size: 0.75rem;"></i> Elevate Labs</p>
-            <a href="certificates/Elevate labs Internship Certificate.pdf" target="_blank" class="cert-link" id="cert4-view">
-              View Certificate <i class="fas fa-arrow-right"></i>
-            </a>
-          </div>
-
-          <!-- Cert 5: Deloitte -->
-          <div class="cert-card reveal reveal-delay-2" id="cert-deloitte">
-            <div class="cert-card-top">
-              <div class="cert-icon-box pink">
-                <i class="fas fa-briefcase"></i>
-              </div>
-              <div class="cert-year">2025</div>
-            </div>
-            <h3 class="cert-title">Job Simulation Certificate</h3>
-            <p class="cert-issuer"><i class="fas fa-building" style="margin-right: 6px; color: var(--accent); font-size: 0.75rem;"></i> Deloitte · Forage</p>
-            <a href="https://drive.google.com/file/d/1irQkvL0rqNXB9kUWPRGwH6m6DORXcWvZ/view" target="_blank" rel="noopener" class="cert-link" id="cert5-view">
-              View Certificate <i class="fas fa-arrow-right"></i>
-            </a>
-          </div>
-
+        <div class="stat-bubble">
+          <div class="stat-bubble-num">2</div>
+          <div class="stat-bubble-lbl">Internships</div>
         </div>
-
-        <!-- CTA Block -->
-        <div class="reveal" style="margin-top: 60px; padding: 50px; background: linear-gradient(135deg, rgba(99,102,241,0.08), rgba(167,139,250,0.08)); border: 1px solid rgba(99,102,241,0.2); border-radius: var(--radius-xl); text-align: center;">
-          <i class="fas fa-award" style="font-size: 2.5rem; background: var(--gradient-1); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 16px; display: block;"></i>
-          <h3 style="font-family: 'Space Grotesk', sans-serif; font-size: 1.4rem; color: var(--text-primary); margin-bottom: 8px;">Continuously Learning</h3>
-          <p style="color: var(--text-secondary); margin-bottom: 28px; max-width: 500px; margin-left: auto; margin-right: auto; font-size: 0.9rem; line-height: 1.7;">
-            I'm always expanding my knowledge through courses, real-world projects, and industry programs. More certifications are in progress.
-          </p>
-          <a href="contact.html" class="btn btn-primary" id="certs-contact-btn">
-            <i class="fas fa-envelope"></i> Get In Touch
-          </a>
+        <div class="stat-bubble">
+          <div class="stat-bubble-num">2026</div>
+          <div class="stat-bubble-lbl">Latest Year</div>
         </div>
-
       </div>
-    </section>
-  </main>
+    </div>
+  </section>
 
-  <footer class="footer">
-    <div class="footer-inner">
-      <div class="footer-logo">K<span>.</span></div>
-      <p class="footer-text">© 2025 Vangapandu Kundan. Made with <span>♥</span> in Hyderabad.</p>
-      <div class="footer-links">
-        <a href="about.html">About</a>
-        <a href="projects.html">Projects</a>
-        <a href="contact.html">Contact</a>
+  <!-- Certs Grid -->
+  <div class="certs-content">
+    <div class="certs-grid">
+
+      <!-- Cert 1: AI Weather -->
+      <a href="https://drive.google.com/file/d/1Kjc8iJ3PhNnvKCoBE99qNkr5UQDOizk-/view?usp=sharing"
+         target="_blank" rel="noopener" class="cert-card c-indigo reveal reveal-d1" id="cert-1">
+        <div class="cert-top">
+          <div class="cert-icon c-indigo"><i class="fas fa-cloud-sun"></i></div>
+          <span class="cert-year-tag">2025</span>
+        </div>
+        <h3 class="cert-title">Harnessing Artificial Intelligence to Weather Forecasting</h3>
+        <p class="cert-issuer"><i class="fas fa-building"></i> Gitam · Workshop</p>
+        <span class="cert-link">View Certificate <i class="fas fa-arrow-right"></i></span>
+      </a>
+
+      <!-- Cert 2: Google Data Analytics -->
+      <a href="https://drive.google.com/file/d/14QE3PVWPu8PL6GlwsMmwWtS_7yHHeRk-/view?usp=sharing"
+         target="_blank" rel="noopener" class="cert-card c-pink reveal reveal-d2" id="cert-2">
+        <div class="cert-top">
+          <div class="cert-icon c-pink"><i class="fab fa-google"></i></div>
+          <span class="cert-year-tag">2025</span>
+        </div>
+        <h3 class="cert-title">Data Analytics Certificate</h3>
+        <p class="cert-issuer"><i class="fas fa-building"></i> Google · Coursera</p>
+        <span class="cert-link">View Certificate <i class="fas fa-arrow-right"></i></span>
+      </a>
+
+      <!-- Cert 3: Python Course -->
+      <a href="https://drive.google.com/file/d/1eZ3j85PAicDU8UP25I_w2NIdBDDTiY0W/view?usp=sharing"
+         target="_blank" rel="noopener" class="cert-card c-green reveal reveal-d3" id="cert-3">
+        <div class="cert-top">
+          <div class="cert-icon c-green"><i class="fab fa-python"></i></div>
+          <span class="cert-year-tag">2025</span>
+        </div>
+        <h3 class="cert-title">Python Course Certificate</h3>
+        <p class="cert-issuer"><i class="fas fa-building"></i> Naresh i Technologies</p>
+        <span class="cert-link">View Certificate <i class="fas fa-arrow-right"></i></span>
+      </a>
+
+      <!-- Cert 4: UI/UX design -->
+      <a href="https://drive.google.com/file/d/1qdOD5XtbqDVZhEKaXCDKO2ws9F8GXkeL/view?usp=sharing"
+         target="_blank" rel="noopener" class="cert-card c-sky reveal reveal-d1" id="cert-4">
+        <div class="cert-top">
+          <div class="cert-icon c-sky"><i class="fas fa-pen-ruler"></i></div>
+          <span class="cert-year-tag">2025</span>
+        </div>
+        <h3 class="cert-title">Ui/Ux design Certificate</h3>
+        <p class="cert-issuer"><i class="fas fa-building"></i> Google · Coursera</p>
+        <span class="cert-link">View Certificate <i class="fas fa-arrow-right"></i></span>
+      </a>
+
+      <!-- Cert 5: Data Science Internship -->
+      <a href="certificates/Internship Certificate.pdf"
+         target="_blank" class="cert-card c-amber reveal reveal-d2" id="cert-5">
+        <div class="cert-top">
+          <div class="cert-icon c-amber"><i class="fas fa-chart-bar"></i></div>
+          <span class="cert-year-tag">2025</span>
+        </div>
+        <h3 class="cert-title">Data Science Internship</h3>
+        <p class="cert-issuer"><i class="fas fa-building"></i> Intrainz</p>
+        <span class="cert-link">View Certificate <i class="fas fa-arrow-right"></i></span>
+      </a>
+
+      <!-- Cert 6: Data Analytics Simulation -->
+      <a href="https://drive.google.com/file/d/1irQkvL0rqNXB9kUWPRGwH6m6DORXcWvZ/view?usp=sharing"
+         target="_blank" rel="noopener" class="cert-card c-violet reveal reveal-d3" id="cert-6">
+        <div class="cert-top">
+          <div class="cert-icon c-violet"><i class="fas fa-laptop-code"></i></div>
+          <span class="cert-year-tag">2025</span>
+        </div>
+        <h3 class="cert-title">Data Analytics Job Simulation</h3>
+        <p class="cert-issuer"><i class="fas fa-building"></i> Deloitte · Forage</p>
+        <span class="cert-link">View Certificate <i class="fas fa-arrow-right"></i></span>
+      </a>
+
+      <!-- Cert 7: Python Developer Internship -->
+      <a href="certificates/Elevate labs Internship Certificate.pdf"
+         target="_blank" class="cert-card c-indigo reveal reveal-d1" id="cert-7">
+        <div class="cert-top">
+          <div class="cert-icon c-indigo"><i class="fas fa-code"></i></div>
+          <span class="cert-year-tag">2025</span>
+        </div>
+        <h3 class="cert-title">Python Developer Internship</h3>
+        <p class="cert-issuer"><i class="fas fa-building"></i> Elevate Labs</p>
+        <span class="cert-link">View Certificate <i class="fas fa-arrow-right"></i></span>
+      </a>
+
+      <!-- Cert 8: Engineer AI Agent with Development kit -->
+      <a href="https://www.credly.com/badges/6739cc4a-7136-4fb3-8d9a-9626e827798c/public_url"
+         target="_blank" rel="noopener" class="cert-card c-violet reveal reveal-d2" id="cert-8">
+        <div class="cert-top">
+          <div class="cert-icon c-violet"><i class="fas fa-robot"></i></div>
+          <span class="cert-year-tag">2026</span>
+        </div>
+        <h3 class="cert-title">Engineer AI Agent with Development kit</h3>
+        <p class="cert-issuer"><i class="fas fa-building"></i> Google Cloud</p>
+        <span class="cert-link">View Certificate <i class="fas fa-arrow-right"></i></span>
+      </a>
+
+    </div>
+  </div>
+
+  <!-- CTA Band -->
+  <div class="cta-band">
+    <div class="cta-inner reveal">
+      <div class="section-badge" style="justify-content:center; margin-bottom:18px;"><span class="dot"></span> Always Learning</div>
+      <h3>Continuously expanding knowledge</h3>
+      <p>More certifications are in progress — I'm committed to lifelong learning and growth.</p>
+      <div class="cta-btns">
+        <a href="projects.html" class="btn-ghost" id="cta-projects-btn">
+          <i class="fas fa-folder-open"></i> View Projects
+        </a>
+        <a href="contact.html" class="btn-primary" id="cta-contact-btn">
+          <i class="fas fa-envelope"></i> Get In Touch
+        </a>
       </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="page-footer">
+    <div class="pf-logo">VK<span>.</span></div>
+    <p class="pf-copy">© 2025 Vangapandu Kundan. All Rights Reserved. Built with passion in Hyderabad.</p>
+    <div class="pf-links">
+      <a href="index.html">Home</a>
+      <a href="projects.html">Projects</a>
+      <a href="contact.html">Contact</a>
     </div>
   </footer>
 
   <script src="js/script.js"></script>
+
 </body>
 </html>

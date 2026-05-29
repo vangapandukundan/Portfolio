@@ -33,6 +33,7 @@
     <button class="mobile-close" id="mobileClose"><i class="fas fa-xmark"></i></button>
     <a href="#home" class="active">Home</a>
     <a href="#work">Work</a>
+    <a href="#certifications">Certifications</a>
     <a href="#skills">Skills</a>
     <a href="#about">About</a>
     <a href="#contact">Contact</a>
@@ -54,6 +55,7 @@
     <div class="nav-links">
       <a href="#home" class="active" id="nl-home">Home</a>
       <a href="#work" id="nl-work">Work</a>
+      <a href="#certifications" id="nl-certifications">Certifications</a>
       <a href="#skills" id="nl-skills">Skills</a>
       <a href="#about" id="nl-about">About</a>
       <a href="#contact" id="nl-contact">Contact</a>
@@ -61,9 +63,20 @@
 
     <!-- Right -->
     <div class="nav-right">
-      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
-        <i class="fas fa-sun"></i>
-      </button>
+      <!-- Theme Selector -->
+      <div class="theme-menu-container">
+        <button class="theme-toggle-btn" id="theme-toggle-btn" aria-label="Change Accent Color">
+          <i class="fas fa-palette"></i>
+        </button>
+        <div class="theme-dropdown" id="theme-dropdown">
+          <button class="theme-opt-color gold active" data-color="gold" title="Royal Gold"></button>
+          <button class="theme-opt-color purple" data-color="purple" title="Electric Indigo"></button>
+          <button class="theme-opt-color pink" data-color="pink" title="Cyber Pink"></button>
+          <button class="theme-opt-color green" data-color="green" title="Neon Emerald"></button>
+          <button class="theme-opt-color blue" data-color="blue" title="Sky Blue"></button>
+        </div>
+      </div>
+
       <a href="files/Vangapandu_Kundan_Resume.pdf" download class="hire-btn" id="hire-btn">
         <i class="fas fa-download"></i> Download CV
       </a>
@@ -110,7 +123,7 @@
           </p>
 
           <div class="hero-cta">
-            <a href="#work" class="btn-primary" id="hero-work-btn">
+            <a href="projects.html" class="btn-primary" id="hero-work-btn">
               <i class="fas fa-bolt"></i> View My Work
             </a>
             <a href="#contact" class="btn-ghost" id="hero-contact-btn">
@@ -130,7 +143,7 @@
           <!-- Stats -->
           <div class="hero-stats">
             <div class="stat-chip">
-              <div class="stat-num">5+</div>
+              <div class="stat-num">7+</div>
               <div class="stat-lbl">Projects</div>
             </div>
             <div class="stat-chip">
@@ -139,7 +152,7 @@
             </div>
             <div class="stat-chip">
               <div class="stat-num">5+</div>
-              <div class="stat-lbl">Certs</div>
+              <div class="stat-lbl">Certifications</div>
             </div>
             <div class="stat-chip">
               <div class="stat-num">3rd</div>
@@ -187,7 +200,7 @@
           <span class="marquee-item"><i class="fas fa-flask"></i> Flask</span>
           <span class="marquee-item"><i class="fab fa-git-alt"></i> Git</span>
           <span class="marquee-item"><i class="fas fa-book"></i> Jupyter</span>
-          <span class="marquee-item"><i class="fas fa-chart-pie"></i> Plotly</span>
+          <span class="marquee-item"><i class="fas fa-chart-pie"></i> NoSql</span>
         </div>
       </div>
 
@@ -203,7 +216,7 @@
           <span class="marquee-item">Coursera</span>
           <span class="marquee-item">OpenAI</span>
           <span class="marquee-item">Hugging Face</span>
-          <span class="marquee-item">NVIDIA</span>
+          <span class="marquee-item">Anthropic</span>
           <span class="marquee-item">Microsoft</span>
           <span class="marquee-item">Deloitte</span>
           <span class="marquee-item">Google</span>
@@ -214,7 +227,7 @@
           <span class="marquee-item">Coursera</span>
           <span class="marquee-item">OpenAI</span>
           <span class="marquee-item">Hugging Face</span>
-          <span class="marquee-item">NVIDIA</span>
+          <span class="marquee-item">Anthropic</span>
           <span class="marquee-item">Microsoft</span>
           <span class="marquee-item">Deloitte</span>
         </div>
@@ -230,13 +243,12 @@
         <div class="projects-header reveal">
           <div>
             <div class="section-badge"><span class="dot"></span> Featured Work</div>
-            <h2 class="section-h">Selected Projects</h2>
+            <h2 class="section-h">Projects Build</h2>
             <p class="section-sub">ML systems and data apps — built from research to deployed reality.</p>
           </div>
           <div class="filter-tabs" id="filterTabs">
             <button class="ftab active" data-f="all" id="ftab-all">All</button>
             <button class="ftab" data-f="ml" id="ftab-ml">ML / AI</button>
-            <button class="ftab" data-f="nlp" id="ftab-nlp">NLP</button>
             <button class="ftab" data-f="web" id="ftab-web">Web Tools</button>
           </div>
         </div>
@@ -245,35 +257,34 @@
         <div class="project-featured reveal" data-cat="ml" id="proj-featured">
           <div class="proj-img">
             <div class="proj-gradient"
-              style="background: linear-gradient(135deg, rgba(99,102,241,0.3) 0%, rgba(167,139,250,0.2) 100%);"></div>
-            <span class="proj-badge">+Live Model</span>
-            <i class="fas fa-shield-alt proj-icon-big" style="color:#818cf8;"></i>
+              style="background: linear-gradient(135deg, rgba(236,72,153,0.3) 0%, rgba(99,102,241,0.2) 100%);"></div>
+            <span class="proj-badge">AI Agent</span>
+            <i class="fas fa-robot proj-icon-big" style="color:#ec4899;"></i>
           </div>
           <div class="proj-body">
             <div class="proj-meta">
-              <span class="proj-type">ML / AI</span>
-              <span class="proj-year">2024</span>
+              <span class="proj-type">AI Agent &amp; Analytics</span>
+              <span class="proj-year">2026</span>
             </div>
-            <h3 class="proj-title">Threat Detection AI</h3>
+            <h3 class="proj-title">DevPulse</h3>
             <p class="proj-desc">
-              A machine learning pipeline that classifies cybersecurity threats from network traffic data. Trained on
-              real-world datasets with feature engineering, model selection, and a live Streamlit dashboard for
-              real-time threat scoring.
+              An AI-driven developer advocacy agent and analytics dashboard. It tracks developer metrics, detects unrecorded "Invisible Work" (peer reviews, discussions, mentoring), assesses burnout risk, and features calendar-blocking focus autopiloting via Google Calendar MCP to protect developer wellbeing.
             </p>
             <div class="proj-pills">
+              <span class="proj-pill">React.js</span>
+              <span class="proj-pill">FastAPI</span>
               <span class="proj-pill">Python</span>
-              <span class="proj-pill">Scikit-learn</span>
-              <span class="proj-pill">Pandas</span>
-              <span class="proj-pill">Streamlit</span>
-              <span class="proj-pill">Model Deployment</span>
+              <span class="proj-pill">Google Calendar API</span>
+              <span class="proj-pill">AI Agents</span>
+              <span class="proj-pill">TailwindCSS</span>
             </div>
             <div style="display:flex; gap:24px; flex-wrap:wrap;">
-              <a href="https://github.com/vangapandukundan/Threat-Detection-AI" target="_blank" class="proj-link"
+              <a href="https://github.com/vangapandukundan/DevPulse" target="_blank" class="proj-link"
                 id="feat-github">
                 <i class="fab fa-github"></i> View on GitHub <i class="fas fa-arrow-up-right-from-square"
                   style="font-size:0.7rem;"></i>
               </a>
-              <a href="https://threat-detection-ai-sfmyghe6azj9pr29x8yaon.streamlit.app/" target="_blank"
+              <a href="https://dev-pulse-sigma-taupe.vercel.app/" target="_blank"
                 class="proj-link" id="feat-demo">
                 <i class="fas fa-external-link"></i> Live Demo <i class="fas fa-arrow-up-right-from-square"
                   style="font-size:0.7rem;"></i>
@@ -282,62 +293,164 @@
           </div>
         </div>
 
-        <!-- 3 Small Cards -->
+        <!-- 6 Small Cards -->
         <div class="projects-grid" id="projGrid">
 
+          <!-- Green Quantum Data Center Optimization -->
+          <div class="proj-card reveal reveal-d1" data-cat="ml" id="proj7">
+            <div class="proj-img">
+              <div class="proj-gradient"
+                style="background: linear-gradient(135deg, rgba(16,185,129,0.25), rgba(52,211,153,0.2));"></div>
+              <span class="proj-badge"
+                style="background:rgba(16,185,129,0.12); border-color:rgba(16,185,129,0.25); color:#10b981;">Live</span>
+              <i class="fas fa-leaf proj-icon-big" style="color:#10b981; font-size:3.5rem; opacity:0.4;"></i>
+            </div>
+            <div class="proj-body">
+              <div class="proj-meta">
+                <span class="proj-type">Machine Learning</span>
+                <span class="proj-year">2025</span>
+              </div>
+              <h3 class="proj-title">Green Quantum Data Center</h3>
+              <p class="proj-desc">An advanced Machine Learning platform that optimizes data center energy consumption
+                and emissions.</p>
+              <div class="proj-pills">
+                <span class="proj-pill">Python</span>
+                <span class="proj-pill">Pandas</span>
+                <span class="proj-pill">Scikit-learn</span>
+              </div>
+              <div style="display:flex;gap:16px;flex-wrap:wrap;">
+                <a href="https://github.com/vangapandukundan/green_dc_project" target="_blank" class="proj-link"><i
+                    class="fab fa-github"></i> GitHub</a>
+                <a href="https://drive.google.com/file/d/1uCF0VY8LsP0wmKbDTpkY_0W8fSxreqNN/view?usp=sharing"
+                  target="_blank" class="proj-link"><i class="fas fa-video"></i> Video Demo</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Emotional Feedback Tracker -->
+          <div class="proj-card reveal reveal-d2" data-cat="ml" id="proj6">
+            <div class="proj-img">
+              <div class="proj-gradient"
+                style="background: linear-gradient(135deg, rgba(251,191,36,0.25), rgba(167,139,250,0.2));"></div>
+              <span class="proj-badge"
+                style="background:rgba(251,191,36,0.12); border-color:rgba(251,191,36,0.25); color:#fbbf24;">Live</span>
+              <i class="fas fa-heart proj-icon-big" style="color:#fbbf24; font-size:3.5rem; opacity:0.4;"></i>
+            </div>
+            <div class="proj-body">
+              <div class="proj-meta">
+                <span class="proj-type">Machine Learning</span>
+                <span class="proj-year">2025</span>
+              </div>
+              <h3 class="proj-title">Emotional Feedback Tracker</h3>
+              <p class="proj-desc">Tracks and analyzes emotional feedback using AI, providing insights into user
+                sentiment.</p>
+              <div class="proj-pills">
+                <span class="proj-pill">Python</span>
+                <span class="proj-pill">TensorFlow</span>
+                <span class="proj-pill">Flask</span>
+              </div>
+              <div style="display:flex;gap:16px;flex-wrap:wrap;">
+                <a href="https://github.com/vangapandukundan/EmotionalFeedbackTracker" target="_blank"
+                  class="proj-link"><i class="fab fa-github"></i> GitHub</a>
+                <a href="https://vangapandukundan.github.io/EmotionalFeedbackTracker/" target="_blank" class="proj-link"><i class="fas fa-video"></i> Video Demo</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Campus Auth -->
+          <div class="proj-card reveal reveal-d3" data-cat="web" id="proj5">
+            <div class="proj-img">
+              <div class="proj-gradient"
+                style="background: linear-gradient(135deg, rgba(52,211,153,0.25), rgba(167,139,250,0.2));"></div>
+              <span class="proj-badge"
+                style="background:rgba(52,211,153,0.12); border-color:rgba(52,211,153,0.25); color:#34d399;">Live</span>
+              <i class="fas fa-lock proj-icon-big" style="color:#34d399; font-size:3.5rem; opacity:0.4;"></i>
+            </div>
+            <div class="proj-body">
+              <div class="proj-meta">
+                <span class="proj-type">Web Tool</span>
+                <span class="proj-year">2025</span>
+              </div>
+              <h3 class="proj-title">Campus Auth</h3>
+              <p class="proj-desc">Modern campus authentication system mapping biometric and face recognition features.
+              </p>
+              <div class="proj-pills">
+                <span class="proj-pill">React</span>
+                <span class="proj-pill">Node.js</span>
+                <span class="proj-pill">WebAuthn</span>
+              </div>
+              <div style="display:flex;gap:16px;flex-wrap:wrap;">
+                <a href="https://github.com/vangapandukundan/campus-auth" target="_blank" class="proj-link"><i
+                    class="fab fa-github"></i> GitHub</a>
+                <a href="https://drive.google.com/file/d/18F4Ruanr3IfFe77EiiX7thIK6s9OVSrX/view?usp=sharing" target="_blank" class="proj-link"><i
+                    class="fas fa-video"></i> Video Demo</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- AI Code Reviewer -->
           <div class="proj-card reveal reveal-d1" data-cat="ml" id="proj2">
             <div class="proj-img">
               <div class="proj-gradient"
                 style="background: linear-gradient(135deg, rgba(52,211,153,0.25), rgba(99,102,241,0.2));"></div>
               <span class="proj-badge"
-                style="background:rgba(52,211,153,0.12); border-color:rgba(52,211,153,0.25); color:#22c55e;">Advanced
-                ML</span>
-              <i class="fas fa-server proj-icon-big" style="color:#34d399; font-size:3.5rem; opacity:0.4;"></i>
+                style="background:rgba(52,211,153,0.12); border-color:rgba(52,211,153,0.25); color:#34d399;">Live</span>
+              <i class="fas fa-code-branch proj-icon-big" style="color:#34d399; font-size:3.5rem; opacity:0.4;"></i>
             </div>
             <div class="proj-body">
               <div class="proj-meta">
-                <span class="proj-type">Data Pipeline</span>
-                <span class="proj-year">2026</span>
+                <span class="proj-type">Developer Tools</span>
+                <span class="proj-year">2025</span>
               </div>
-              <h3 class="proj-title">Green Data Center ML</h3>
-              <p class="proj-desc">Unsupervised server clustering & anomaly detection using K-Means and Isolation
-                Forests for green energy optimization.</p>
+              <h3 class="proj-title">AI Code Reviewer</h3>
+              <p class="proj-desc">Automated code quality analysis tool integrating Flake8 static analysis with
+                AI-powered insights.</p>
               <div class="proj-pills">
                 <span class="proj-pill">Python</span>
-                <span class="proj-pill">Isolation Forest</span>
-                <span class="proj-pill">Clustering</span>
+                <span class="proj-pill">Streamlit</span>
+                <span class="proj-pill">Flake8</span>
               </div>
               <div style="display:flex;gap:16px;flex-wrap:wrap;">
-                <a href="https://github.com/vangapandukundan" target="_blank" class="proj-link" id="proj2-gh"><i
+                <a href="https://github.com/vangapandukundan/ai-code-reviewer" target="_blank" class="proj-link"><i
                     class="fab fa-github"></i> GitHub</a>
+                <a href="https://jgmqxoaptndlsravfmjpxg.streamlit.app/" target="_blank" class="proj-link"><i
+                    class="fas fa-external-link"></i> Live Demo</a>
               </div>
             </div>
           </div>
 
-          <div class="proj-card reveal reveal-d2" data-cat="nlp" id="proj3">
+          <!-- Threat Detection AI -->
+          <div class="proj-card reveal reveal-d2" data-cat="ml" id="proj1">
             <div class="proj-img">
               <div class="proj-gradient"
-                style="background: linear-gradient(135deg, rgba(251,191,36,0.25), rgba(244,114,182,0.2));"></div>
-              <i class="fas fa-comments proj-icon-big" style="color:#fbbf24; font-size:3.5rem; opacity:0.4;"></i>
+                style="background: linear-gradient(135deg, rgba(99,102,241,0.25), rgba(167,139,250,0.2));"></div>
+              <span class="proj-badge"
+                style="background:rgba(99,102,241,0.12); border-color:rgba(99,102,241,0.25); color:#818cf8;">Live</span>
+              <i class="fas fa-shield-alt proj-icon-big" style="color:#818cf8; font-size:3.5rem; opacity:0.4;"></i>
             </div>
             <div class="proj-body">
               <div class="proj-meta">
-                <span class="proj-type">NLP</span>
+                <span class="proj-type">ML / AI</span>
                 <span class="proj-year">2024</span>
               </div>
-              <h3 class="proj-title">NLP Sentiment Analysis</h3>
-              <p class="proj-desc">Real-time sentiment classifier for social media. Visualizes public opinion trends
-                using NLP pipelines.</p>
+              <h3 class="proj-title">Threat Detection AI</h3>
+              <p class="proj-desc">A classification pipeline detecting cybersecurity threats from network logs. Combines feature engineering, model evaluation, and Streamlit dashboard.</p>
               <div class="proj-pills">
                 <span class="proj-pill">Python</span>
-                <span class="proj-pill">NLTK</span>
-                <span class="proj-pill">Plotly</span>
+                <span class="proj-pill">Scikit-learn</span>
+                <span class="proj-pill">Pandas</span>
+                <span class="proj-pill">Streamlit</span>
               </div>
-              <a href="https://github.com/vangapandukundan" target="_blank" class="proj-link" id="proj3-gh"><i
-                  class="fab fa-github"></i> GitHub</a>
+              <div style="display:flex;gap:16px;flex-wrap:wrap;">
+                <a href="https://github.com/vangapandukundan/Threat-Detection-AI" target="_blank" class="proj-link"><i
+                    class="fab fa-github"></i> GitHub</a>
+                <a href="https://threat-detection-ai-sfmyghe6azj9pr29x8yaon.streamlit.app/" target="_blank" class="proj-link"><i
+                    class="fas fa-external-link"></i> Live Demo</a>
+              </div>
             </div>
           </div>
 
+          <!-- Browser Image Resizer -->
           <div class="proj-card reveal reveal-d3" data-cat="web" id="proj4">
             <div class="proj-img">
               <div class="proj-gradient"
@@ -352,20 +465,143 @@
                 <span class="proj-year">2024</span>
               </div>
               <h3 class="proj-title">Browser Image Resizer</h3>
-              <p class="proj-desc">Client-side image resizing using HTML5 Canvas API — no server, instant results.</p>
+              <p class="proj-desc">Client-side image resizing using HTML5 Canvas API — no server processing needed.</p>
               <div class="proj-pills">
                 <span class="proj-pill">HTML5 Canvas</span>
                 <span class="proj-pill">JavaScript</span>
               </div>
               <div style="display:flex;gap:16px;flex-wrap:wrap;">
-                <a href="https://github.com/vangapandukundan/Image_Resizer" target="_blank" class="proj-link"
-                  id="proj4-gh"><i class="fab fa-github"></i> GitHub</a>
-                <a href="https://vangapandukundan.github.io/Image_Resizer/" target="_blank" class="proj-link"
-                  id="proj4-demo"><i class="fas fa-external-link"></i> Demo</a>
+                <a href="https://github.com/vangapandukundan/Image_Resizer/blob/main/index.html" target="_blank"
+                  class="proj-link"><i class="fab fa-github"></i> GitHub</a>
+                <a href="https://vangapandukundan.github.io/Image_Resizer/" target="_blank" class="proj-link"><i
+                    class="fas fa-external-link"></i> Live Demo</a>
               </div>
             </div>
           </div>
 
+        </div>
+      </div>
+    </section>
+
+    <!-- ─────────────────────────────────────────────────────────
+     CERTIFICATIONS
+───────────────────────────────────────────────────────────── -->
+    <section id="certifications" style="padding: 100px 0;">
+      <div class="container">
+
+        <div class="reveal">
+          <div class="section-badge"><span class="dot"></span> Achievements</div>
+          <h2 class="section-h">Certifications</h2>
+          <p class="section-sub">Professional credentials and job simulations demonstrating practical expertise.</p>
+        </div>
+
+        <div class="certifications-grid"
+          style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; margin-top: 48px;">
+
+          <!-- Cert 1: AI Weather -->
+          <a href="https://drive.google.com/file/d/1Kjc8iJ3PhNnvKCoBE99qNkr5UQDOizk-/view?usp=sharing" target="_blank"
+            class="proj-card reveal" style="text-decoration: none; color: inherit; display: block;">
+            <div class="proj-body" style="padding: 32px 24px;">
+              <div class="proj-meta">
+                <span class="proj-type">Gitam · Workshop</span>
+                <span class="proj-year">2025</span>
+              </div>
+              <h3 class="proj-title" style="font-size: 1.3rem;">Harnessing Artificial Intelligence to Weather
+                Forecasting</h3>
+              <p class="proj-desc" style="margin-bottom: 0;">Workshop</p>
+            </div>
+          </a>
+
+          <!-- Cert 2: Google Data Analytics -->
+          <a href="https://drive.google.com/file/d/14QE3PVWPu8PL6GlwsMmwWtS_7yHHeRk-/view?usp=sharing" target="_blank"
+            class="proj-card reveal reveal-d4" style="text-decoration: none; color: inherit; display: block;">
+            <div class="proj-body" style="padding: 32px 24px;">
+              <div class="proj-meta">
+                <span class="proj-type">Google · Coursera</span>
+                <span class="proj-year">2025</span>
+              </div>
+              <h3 class="proj-title" style="font-size: 1.3rem;"> Data Analytics Certificate</h3>
+              <p class="proj-desc" style="margin-bottom: 0;">Course Certificate</p>
+            </div>
+          </a>
+
+          <!-- cert 3 python-->
+          <a href="https://drive.google.com/file/d/1eZ3j85PAicDU8UP25I_w2NIdBDDTiY0W/view?usp=sharing"
+            class="proj-card reveal reveal-d5" style="text-decoration: none; color: inherit; display: block;">
+            <div class="proj-body" style="padding: 32px 24px;">
+              <div class="proj-meta">
+                <span class="proj-type">Naresh i Technologies</span>
+                <span class="proj-year">2025</span>
+              </div>
+              <h3 class="proj-title" style="font-size: 1.3rem;">Python Course Certificate</h3>
+              <p class="proj-desc" style="margin-bottom: 0;">Course Completion Certificate</p>
+            </div>
+          </a>
+
+          <!-- Cert 4: UI/UX -->
+          <a href="https://drive.google.com/file/d/1qdOD5XtbqDVZhEKaXCDKO2ws9F8GXkeL/view?usp=sharing" target="_blank"
+            class="proj-card reveal reveal-d5" style="text-decoration: none; color: inherit; display: block;">
+            <div class="proj-body" style="padding: 32px 24px;">
+              <div class="proj-meta">
+                <span class="proj-type">Google · Coursera</span>
+                <span class="proj-year">2025</span>
+              </div>
+              <h3 class="proj-title" style="font-size: 1.3rem;">Ui/Ux design Certificate</h3>
+              <p class="proj-desc" style="margin-bottom: 0;">Course Certificate</p>
+            </div>
+          </a>
+
+          <!-- Cert 5: Data Science Internship -->
+          <a href="certificates/Internship Certificate.pdf" target="_blank" class="proj-card reveal reveal-d2"
+            style="text-decoration: none; color: inherit; display: block;">
+            <div class="proj-body" style="padding: 32px 24px;">
+              <div class="proj-meta">
+                <span class="proj-type">Intrainz</span>
+                <span class="proj-year">2025</span>
+              </div>
+              <h3 class="proj-title" style="font-size: 1.3rem;">Data Science Internship</h3>
+              <p class="proj-desc" style="margin-bottom: 0;"> Certificate of Internship</p>
+            </div>
+          </a>
+
+          <!-- Cert 6: Data Analytics Simulation -->
+          <a href="https://drive.google.com/file/d/1irQkvL0rqNXB9kUWPRGwH6m6DORXcWvZ/view?usp=sharing" target="_blank"
+            class="proj-card reveal reveal-d1" style="text-decoration: none; color: inherit; display: block;">
+            <div class="proj-body" style="padding: 32px 24px;">
+              <div class="proj-meta">
+                <span class="proj-type">Deloitte · Forage</span>
+                <span class="proj-year">2025</span>
+              </div>
+              <h3 class="proj-title" style="font-size: 1.3rem;">Data Analytics Job Simulation</h3>
+              <p class="proj-desc" style="margin-bottom: 0;">Job Simulation</p>
+            </div>
+          </a>
+
+          <!-- Cert 7: Python Dev -->
+          <a href="certificates/Elevate labs Internship Certificate.pdf" target="_blank"
+            class="proj-card reveal reveal-d3" style="text-decoration: none; color: inherit; display: block;">
+            <div class="proj-body" style="padding: 32px 24px;">
+              <div class="proj-meta">
+                <span class="proj-type">Elevate Labs</span>
+                <span class="proj-year">2025</span>
+              </div>
+              <h3 class="proj-title" style="font-size: 1.3rem;">Python Developer Internship</h3>
+              <p class="proj-desc" style="margin-bottom: 0;">Certificate of Internship</p>
+            </div>
+          </a>
+
+          <!-- Cert 8: skill batch -->
+          <a href="https://www.credly.com/badges/6739cc4a-7136-4fb3-8d9a-9626e827798c/public_url" target="_blank"
+            class="proj-card reveal reveal-d3" style="text-decoration: none; color: inherit; display: block;">
+            <div class="proj-body" style="padding: 32px 24px;">
+              <div class="proj-meta">
+                <span class="proj-type">Google Cloud</span>
+                <span class="proj-year">2026</span>
+              </div>
+              <h3 class="proj-title" style="font-size: 1.3rem;">Engineer AI Agent with Development kit </h3>
+              <p class="proj-desc" style="margin-bottom: 0;">skill batch</p>
+            </div>
+          </a>
         </div>
       </div>
     </section>
@@ -379,155 +615,44 @@
         <div class="reveal" style="max-width:580px;">
           <div class="section-badge"><span class="dot"></span> Expertise</div>
           <h2 class="section-h">Skills &amp; Tools</h2>
-          <p class="section-sub">Built through coursework, projects, and real internship experience across data science
-            disciplines.</p>
+          <p class="section-sub">Built through coursework, projects, and real internship experience across data science disciplines.</p>
         </div>
 
-        <div class="skills-grid">
+        <div class="skills-container">
+          <!-- Left Column: Interactive Orbital Menu -->
+          <div class="skills-left reveal">
+            <div class="orbital-menu">
+              <!-- Curved dotted line -->
+              <svg class="orbital-svg" viewBox="0 0 200 400">
+                <path d="M 50,0 Q 150,200 50,400" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="2" stroke-dasharray="6,6" />
+              </svg>
 
-          <!-- Progress Bars -->
-          <div>
-            <h3 style="font-size:1.15rem; font-weight:700; color:var(--white); margin-bottom:28px;">Tool Proficiency
-            </h3>
-            <div class="skill-bars" id="skillBars">
-
-              <div class="skill-bar-item reveal">
-                <div class="skill-bar-header">
-                  <div class="skill-bar-name">Python <span class="skill-badge">Primary</span></div>
-                  <div class="skill-pct">92%</div>
-                </div>
-                <div class="skill-bar-track">
-                  <div class="skill-bar-fill" data-w="92"></div>
-                </div>
+              <!-- Web Dev Node -->
+              <div class="orbit-node pos-top" data-id="web">
+                <div class="node-icon"><i class="fas fa-code"></i></div>
+                <span class="node-label">Web Development</span>
               </div>
 
-              <div class="skill-bar-item reveal reveal-d1">
-                <div class="skill-bar-header">
-                  <div class="skill-bar-name">Machine Learning <span class="skill-badge">Primary</span></div>
-                  <div class="skill-pct">85%</div>
-                </div>
-                <div class="skill-bar-track">
-                  <div class="skill-bar-fill" data-w="85"></div>
-                </div>
+              <!-- Data Science & ML Node (Default center) -->
+              <div class="orbit-node pos-center" data-id="ds">
+                <div class="node-icon"><i class="fas fa-brain"></i></div>
+                <span class="node-label">Data Science &amp; ML</span>
               </div>
 
-              <div class="skill-bar-item reveal reveal-d2">
-                <div class="skill-bar-header">
-                  <div class="skill-bar-name">Data Analysis <span class="skill-badge">Primary</span></div>
-                  <div class="skill-pct">88%</div>
-                </div>
-                <div class="skill-bar-track">
-                  <div class="skill-bar-fill" data-w="88"></div>
-                </div>
+              <!-- Tools & Design Node -->
+              <div class="orbit-node pos-bottom" data-id="tools">
+                <div class="node-icon"><i class="fas fa-wrench"></i></div>
+                <span class="node-label">Tools &amp; Design</span>
               </div>
-
-              <div class="skill-bar-item reveal reveal-d3">
-                <div class="skill-bar-header">
-                  <div class="skill-bar-name">Deep Learning <span class="skill-badge">Secondary</span></div>
-                  <div class="skill-pct">74%</div>
-                </div>
-                <div class="skill-bar-track">
-                  <div class="skill-bar-fill" data-w="74"></div>
-                </div>
-              </div>
-
-              <div class="skill-bar-item reveal reveal-d4">
-                <div class="skill-bar-header">
-                  <div class="skill-bar-name">SQL / Databases <span class="skill-badge">Secondary</span></div>
-                  <div class="skill-pct">79%</div>
-                </div>
-                <div class="skill-bar-track">
-                  <div class="skill-bar-fill" data-w="79"></div>
-                </div>
-              </div>
-
-              <div class="skill-bar-item reveal">
-                <div class="skill-bar-header">
-                  <div class="skill-bar-name">Data Visualization <span class="skill-badge">Secondary</span></div>
-                  <div class="skill-pct">83%</div>
-                </div>
-                <div class="skill-bar-track">
-                  <div class="skill-bar-fill" data-w="83"></div>
-                </div>
-              </div>
-
             </div>
           </div>
 
-          <!-- Competency Cards -->
-          <div>
-            <h3 style="font-size:1.15rem; font-weight:700; color:var(--white); margin-bottom:28px;">Data Science
-              Competencies</h3>
-            <div class="competency-grid">
-
-              <div class="comp-card reveal">
-                <div class="comp-card-header">
-                  <div class="comp-dot"></div>
-                  <div class="comp-title">ML Engineering</div>
-                </div>
-                <div class="comp-tags">
-                  <div class="comp-tag">Supervised Learning</div>
-                  <div class="comp-tag" style="color:var(--text-3);">·</div>
-                  <div class="comp-tag">Feature Engineering</div>
-                  <div class="comp-tag" style="color:var(--text-3);">·</div>
-                  <div class="comp-tag">Model Evaluation</div>
-                  <div class="comp-tag" style="color:var(--text-3);">·</div>
-                  <div class="comp-tag">Deployment</div>
-                </div>
-              </div>
-
-              <div class="comp-card reveal reveal-d1">
-                <div class="comp-card-header">
-                  <div class="comp-dot" style="background:var(--green);"></div>
-                  <div class="comp-title">Data Analysis</div>
-                </div>
-                <div class="comp-tags">
-                  <div class="comp-tag">EDA</div>
-                  <div class="comp-tag" style="color:var(--text-3);">·</div>
-                  <div class="comp-tag">Statistical Testing</div>
-                  <div class="comp-tag" style="color:var(--text-3);">·</div>
-                  <div class="comp-tag">Data Wrangling</div>
-                  <div class="comp-tag" style="color:var(--text-3);">·</div>
-                  <div class="comp-tag">A/B Testing</div>
-                </div>
-              </div>
-
-              <div class="comp-card reveal reveal-d2">
-                <div class="comp-card-header">
-                  <div class="comp-dot" style="background:#fbbf24;"></div>
-                  <div class="comp-title">Deep Learning</div>
-                </div>
-                <div class="comp-tags">
-                  <div class="comp-tag">Neural Networks</div>
-                  <div class="comp-tag" style="color:var(--text-3);">·</div>
-                  <div class="comp-tag">NLP</div>
-                  <div class="comp-tag" style="color:var(--text-3);">·</div>
-                  <div class="comp-tag">TensorFlow</div>
-                  <div class="comp-tag" style="color:var(--text-3);">·</div>
-                  <div class="comp-tag">PyTorch</div>
-                </div>
-              </div>
-
-              <div class="comp-card reveal reveal-d3">
-                <div class="comp-card-header">
-                  <div class="comp-dot" style="background:#f472b6;"></div>
-                  <div class="comp-title">Development</div>
-                </div>
-                <div class="comp-tags">
-                  <div class="comp-tag">Flask / REST API</div>
-                  <div class="comp-tag" style="color:var(--text-3);">·</div>
-                  <div class="comp-tag">Streamlit</div>
-                  <div class="comp-tag" style="color:var(--text-3);">·</div>
-                  <div class="comp-tag">Git</div>
-                  <div class="comp-tag" style="color:var(--text-3);">·</div>
-                  <div class="comp-tag">Docker</div>
-                </div>
-              </div>
-
-            </div>
+          <!-- Right Column: Skills List Pane -->
+          <div class="skills-right reveal reveal-d1">
+            <!-- Dynamically populated by JS -->
           </div>
-
         </div>
+
       </div>
     </section>
 
@@ -678,12 +803,12 @@
                 <div class="form-row">
                   <div class="form-group">
                     <label class="form-label" for="name">Your Name</label>
-                    <input type="text" id="name" name="name" required class="form-control" placeholder="John Doe">
+                    <input type="text" id="name" name="name" required class="form-control" placeholder="Kundan Vangapandu">
                   </div>
                   <div class="form-group">
                     <label class="form-label" for="email">Email Address</label>
                     <input type="email" id="email" name="email" required class="form-control"
-                      placeholder="john@example.com">
+                      placeholder="vangapandukundan@gmail.com">
                   </div>
                 </div>
                 <div class="form-group">
@@ -712,14 +837,70 @@
   <!-- ═══ FOOTER ═════════════════════════════════════════════════ -->
   <footer>
     <div class="footer-logo">VK<span>.</span></div>
-    <p class="footer-copy">© 2025 Vangapandu Kundan — Built with passion in Hyderabad.</p>
+    <p class="footer-copy">© 2025 Vangapandu Kundan. All Rights Reserved. Built with passion in Hyderabad.</p>
     <div class="footer-links">
       <a href="#home">Home</a>
       <a href="#work">Work</a>
+      <a href="#certifications">Certifications</a>
       <a href="#skills">Skills</a>
       <a href="#contact">Contact</a>
     </div>
   </footer>
+
+  <!-- ═══ KUNDAN-AI ASSISTANT ════════════════════════════════════ -->
+  <div id="ai-assistant">
+    <!-- Float Button -->
+    <button id="ai-btn" aria-label="Open AI Assistant">
+      <i class="fas fa-robot"></i>
+      <span class="ai-badge">Ask Me</span>
+    </button>
+
+    <!-- Chat Window -->
+    <div id="ai-chat-window" class="hidden">
+      <!-- Header -->
+      <div class="ai-header">
+        <div class="ai-header-profile">
+          <div class="ai-avatar"><i class="fas fa-robot"></i></div>
+          <div>
+            <div class="ai-name">Kundan AI</div>
+            <div class="ai-status"><span class="status-dot"></span> Online &amp; Ready</div>
+          </div>
+        </div>
+        <button id="ai-close-btn" aria-label="Close Chat"><i class="fas fa-times"></i></button>
+      </div>
+
+      <!-- Messages Body -->
+      <div class="ai-body">
+        <div class="ai-msg bot">
+          <div class="ai-msg-content">
+            Hi! I'm Kundan AI, an assistant trained on Kundan's resume and portfolio.<br><br>
+            I can help you:
+            <ul>
+              <li>💻 Explore his projects (like <strong>DevPulse</strong>)</li>
+              <li>⚡ Detail his skills &amp; tech stack</li>
+              <li>🎓 Check out his certifications</li>
+              <li>✉️ Find out how to get in touch</li>
+            </ul>
+            How can I assist you today?
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Options -->
+      <div class="ai-options">
+        <button class="ai-opt" data-query="about">About Kundan</button>
+        <button class="ai-opt" data-query="projects">Show Projects</button>
+        <button class="ai-opt" data-query="skills">Technical Skills</button>
+        <button class="ai-opt" data-query="contact">Get in Touch</button>
+      </div>
+
+      <!-- Input Form -->
+      <form id="ai-form">
+        <input type="text" id="ai-input" placeholder="Type a message..." required autocomplete="off">
+        <button type="submit" id="ai-send-btn" aria-label="Send Message" disabled><i class="fas fa-paper-plane"></i></button>
+      </form>
+    </div>
+  </div>
 
   <script src="js/script.js"></script>
 </body>
