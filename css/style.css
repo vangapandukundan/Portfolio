@@ -95,42 +95,51 @@ body::after {
 /* ─── Custom Cursor ─────────────────────────────────────────── */
 #cursor {
   position: fixed;
+  top: 0;
+  left: 0;
   width: 32px;
   height: 32px;
   border: 1.5px solid var(--accent);
   border-radius: 50%;
   pointer-events: none;
   z-index: 99999;
-  transform: translate(-50%, -50%);
-  transition: width 0.3s var(--ease),
-              height 0.3s var(--ease),
-              border-color 0.3s var(--ease),
-              background 0.3s var(--ease),
-              opacity 0.3s var(--ease);
+  transform: translate3d(-100px, -100px, 0) translate(-50%, -50%);
+  transition: width 0.25s var(--ease-spring),
+              height 0.25s var(--ease-spring),
+              border-color 0.2s var(--ease),
+              background 0.2s var(--ease),
+              opacity 0.2s var(--ease);
   /* NO mix-blend-mode so it stays visible on dark bg */
-  will-change: left, top;
+  will-change: transform;
 }
 
 #cursor.hover {
-  width: 54px;
-  height: 54px;
-  background: rgba(201,168,76,0.10);
+  width: 52px;
+  height: 52px;
+  background: var(--accent-dim);
   border-color: var(--accent);
-  box-shadow: 0 0 16px rgba(201,168,76,0.20);
+  box-shadow: 0 0 20px var(--accent-glow);
 }
 
 #cursor-dot {
   position: fixed;
+  top: 0;
+  left: 0;
   width: 5px;
   height: 5px;
   background: var(--accent);
   border-radius: 50%;
   pointer-events: none;
   z-index: 99999;
-  transform: translate(-50%, -50%);
-  transition: opacity 0.3s var(--ease);
-  box-shadow: 0 0 6px rgba(201,168,76,0.5);
-  will-change: left, top;
+  transform: translate3d(-100px, -100px, 0) translate(-50%, -50%);
+  transition: opacity 0.2s var(--ease);
+  box-shadow: 0 0 6px rgba(201, 168, 76, 0.5);
+  will-change: transform;
+}
+
+/* Dim dot when hovering on interactive elements for click targeting precision */
+#cursor.hover ~ #cursor-dot {
+  opacity: 0.45;
 }
 
 /* ─── Navbar ────────────────────────────────────────────────── */
@@ -341,6 +350,7 @@ section { position: relative; z-index: 1; }
   align-items: center;
   padding-top: var(--nav-h);
   overflow: hidden;
+  overflow-x: clip; /* hard clip prevents hero-stats from creating click dead zones below */
 }
 
 .hero-inner {
@@ -505,15 +515,17 @@ section { position: relative; z-index: 1; }
   background: linear-gradient(180deg, transparent 50%, rgba(10,10,10,0.5));
 }
 
-/* Stats panel */
+/* Stats float right of photo using transform offset — never causes overflow dead zones */
 .hero-stats {
   position: absolute;
-  right: -50px;
+  right: -36px;
   top: 50%;
   transform: translateY(-50%);
   display: flex;
   flex-direction: column;
   gap: 6px;
+  /* Ensure stats never escape the hero section's horizontal boundary */
+  max-width: 110px;
 }
 
 .stat-chip {
@@ -686,10 +698,16 @@ section { position: relative; z-index: 1; }
   border-radius: var(--radius-pill);
   padding: 5px;
   backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  position: relative;
+  z-index: 5;
 }
 
 .ftab {
-  padding: 6px 18px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 7px 20px;
   border-radius: var(--radius-pill);
   font-size: 0.80rem;
   font-weight: 600;
@@ -697,9 +715,15 @@ section { position: relative; z-index: 1; }
   transition: all 0.22s var(--ease);
   cursor: none;
   letter-spacing: 0.02em;
+  pointer-events: auto;
+  touch-action: manipulation;
+  user-select: none;
+  -webkit-user-select: none;
+  white-space: nowrap;
+  min-height: 36px;
 }
 
-.ftab:hover { color: var(--text); background: rgba(255,255,255,0.04); }
+.ftab:hover { color: var(--text); background: rgba(255,255,255,0.06); }
 .ftab.active { background: var(--accent); color: #080C14; box-shadow: 0 2px 8px var(--accent-glow); }
 
 /* Featured card (large) */
@@ -1287,9 +1311,30 @@ footer {
   #cursor, #cursor-dot {
     display: none !important;
   }
-  *, button, a {
+  *, button, a, .ftab, .proj-card, .project-featured, .stat-chip, .comp-card, .fact-item, .skill-bar-item, .marquee-item, .social-btn {
     cursor: auto !important;
   }
+}
+
+body.touch-device,
+body.touch-device *,
+body.touch-device button,
+body.touch-device a,
+body.touch-device .ftab,
+body.touch-device .proj-card,
+body.touch-device .project-featured,
+body.touch-device .stat-chip,
+body.touch-device .comp-card,
+body.touch-device .fact-item,
+body.touch-device .skill-bar-item,
+body.touch-device .marquee-item,
+body.touch-device .social-btn {
+  cursor: auto !important;
+}
+
+body.touch-device #cursor,
+body.touch-device #cursor-dot {
+  display: none !important;
 }
 
 /* ── Tablet ── */
