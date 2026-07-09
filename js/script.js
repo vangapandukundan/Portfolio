@@ -13,37 +13,83 @@
 
   let mx = -100, my = -100;
   let cx = -100, cy = -100;
+  let firstMove = true;
+  let isTouchDevice = false;
+
+  // Touch detection to instantly disable custom cursor on touch devices (phones/tablets)
+  function disableCursorForTouch() {
+    if (isTouchDevice) return;
+    isTouchDevice = true;
+    document.body.classList.add('touch-device');
+    cursor.style.display = 'none';
+    dot.style.display = 'none';
+  }
+
+  // Check if browser reports touch support initially
+  if ('ontouchstart' in window || navigator.maxTouchPoints > 0 || navigator.msMaxTouchPoints > 0) {
+    disableCursorForTouch();
+  }
+
+  // Backup listener in case of dynamic touch interaction
+  window.addEventListener('touchstart', disableCursorForTouch, { passive: true });
 
   // Track mouse
   document.addEventListener('mousemove', (e) => {
+    if (isTouchDevice) return;
+    
     mx = e.clientX;
     my = e.clientY;
-    dot.style.left = mx + 'px';
-    dot.style.top  = my + 'px';
+    
+    // Position dot instantly
+    dot.style.transform = `translate3d(${mx}px, ${my}px, 0) translate(-50%, -50%)`;
+    
+    if (firstMove) {
+      cx = mx;
+      cy = my;
+      cursor.style.transform = `translate3d(${cx}px, ${cy}px, 0) translate(-50%, -50%)`;
+      firstMove = false;
+    }
   });
 
-  // Smooth cursor follow
+  // Smooth cursor follow (outer circle lerping)
+  // High lerp (0.85) = almost real-time → click position visually matches actual mouse
   function animateCursor() {
-    cx += (mx - cx) * 0.12;
-    cy += (my - cy) * 0.12;
-    cursor.style.left = cx + 'px';
-    cursor.style.top  = cy + 'px';
+    if (isTouchDevice) return;
+    
+    if (!firstMove) {
+      cx += (mx - cx) * 0.85;
+      cy += (my - cy) * 0.85;
+      cursor.style.transform = `translate3d(${cx}px, ${cy}px, 0) translate(-50%, -50%)`;
+    }
     requestAnimationFrame(animateCursor);
   }
   animateCursor();
 
-  // Hover grow effect
+  // Hover grow effect (flicker-free interactive element detection)
   const interactives = 'a, button, .ftab, .proj-card, .project-featured, .stat-chip, .comp-card, .fact-item, .skill-bar-item, .marquee-item, .social-btn';
 
   document.addEventListener('mouseover', (e) => {
+    if (isTouchDevice) return;
     if (e.target.closest(interactives)) {
+      // Snap ring exactly to mouse when entering interactive — no lag on hover
+      cx = mx;
+      cy = my;
+      cursor.style.transform = `translate3d(${cx}px, ${cy}px, 0) translate(-50%, -50%)`;
       cursor.classList.add('hover');
     }
   });
 
   document.addEventListener('mouseout', (e) => {
-    if (e.target.closest(interactives)) {
-      cursor.classList.remove('hover');
+    if (isTouchDevice) return;
+    const currentInteractive = e.target.closest(interactives);
+    if (currentInteractive) {
+      const nextInteractive = (e.relatedTarget && typeof e.relatedTarget.closest === 'function')
+        ? e.relatedTarget.closest(interactives)
+        : null;
+      // Only remove the hover class if we're not moving to another interactive element (or nested child)
+      if (!nextInteractive) {
+        cursor.classList.remove('hover');
+      }
     }
   });
 
@@ -227,44 +273,47 @@
 
 // ─── Project Filter ───────────────────────────────────────────
 (function initFilter() {
-  const tabs     = document.querySelectorAll('.ftab');
+  const container = document.getElementById('filterTabs');
+  if (!container) return;
+
+  const tabs     = container.querySelectorAll('.ftab');
   const featured = document.getElementById('proj-featured');
   const cards    = document.querySelectorAll('#projGrid .proj-card');
-  if (!tabs.length) return;
 
-  tabs.forEach(tab => {
-    tab.addEventListener('click', () => {
-      tabs.forEach(t => t.classList.remove('active'));
-      tab.classList.add('active');
+  container.addEventListener('click', (e) => {
+    const tab = e.target.closest('.ftab');
+    if (!tab) return;
 
-      const f = tab.dataset.f;
+    tabs.forEach(t => t.classList.remove('active'));
+    tab.classList.add('active');
 
-      // Featured card
-      if (featured) {
-        const cat = featured.dataset.cat;
-        const show = f === 'all' || cat === f;
-        featured.style.display = show ? 'grid' : 'none';
-        featured.style.opacity = show ? '1' : '0';
-      }
+    const f = tab.dataset.f;
 
-      // Small cards
-      cards.forEach(card => {
-        const cat = card.dataset.cat;
-        const show = f === 'all' || cat === f;
-        card.style.display = show ? 'flex' : 'none';
+    // Featured card
+    if (featured) {
+      const cat = featured.dataset.cat;
+      const show = f === 'all' || cat === f;
+      featured.style.display = show ? 'grid' : 'none';
+      featured.style.opacity = show ? '1' : '0';
+    }
 
-        if (show) {
+    // Small cards
+    cards.forEach(card => {
+      const cat = card.dataset.cat;
+      const show = f === 'all' || cat === f;
+      card.style.display = show ? 'flex' : 'none';
+
+      if (show) {
+        requestAnimationFrame(() => {
+          card.style.opacity = '0';
+          card.style.transform = 'translateY(16px)';
           requestAnimationFrame(() => {
-            card.style.opacity = '0';
-            card.style.transform = 'translateY(16px)';
-            requestAnimationFrame(() => {
-              card.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
-              card.style.opacity = '1';
-              card.style.transform = 'translateY(0)';
-            });
+            card.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
+            card.style.opacity = '1';
+            card.style.transform = 'translateY(0)';
           });
-        }
-      });
+        });
+      }
     });
   });
 })();
