@@ -433,96 +433,153 @@ function showToast(msg, type = 'success') {
   });
 })();
 
-// ─── Interactive Skills Widget ────────────────────────────────
-(function initSkillsWidget() {
-  const container = document.querySelector('.skills-container');
+// ─── Interactive Pipeline Skills Flow ─────────────────────────
+(function initPipelineSkills() {
+  const container = document.querySelector('.pipeline-layout');
   if (!container) return;
 
-  const nodes = container.querySelectorAll('.orbit-node');
-  const skillsRight = container.querySelector('.skills-right');
-  if (!nodes.length || !skillsRight) return;
+  const stages = container.querySelectorAll('.pipeline-stage');
+  const displayPane = document.getElementById('pipelineSkillsPane');
+  const dot = document.getElementById('pipelineDot');
+  if (!stages.length || !displayPane || !dot) return;
 
-  const skillsData = {
-    ds: [
-      { name: 'Python', icon: '<i class="fab fa-python" style="color: #38bdf8;"></i>' },
-      { name: 'Pandas', icon: '<svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" style="color: #818cf8;"><path d="M4 2h4v20H4V2zm6 4h4v16h-4V6zm6 6h4v10h-4V12z"/></svg>' },
-      { name: 'NumPy', icon: '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" style="color: #6366f1;"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>' },
-      { name: 'Scikit-learn', icon: '<svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" style="color: #34d399;"><circle cx="12" cy="7" r="4" opacity="0.8"/><circle cx="7" cy="15" r="4" opacity="0.6"/><circle cx="17" cy="15" r="4" opacity="0.7"/></svg>' },
-      { name: 'XGBoost', icon: '<svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" style="color: #fbbf24;"><path d="M12 2L4 12h6v10l8-10h-6z"/></svg>' }
+  const pipelineData = {
+    ingestion: [
+      { name: 'Python', use: 'Scripting feature transformations & pipelines', icon: '<i class="fab fa-python" style="color: #38bdf8;"></i>' },
+      { name: 'Pandas', use: 'Structuring data tables, EDA & cleaning logs', icon: '<svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" style="color: #818cf8;"><path d="M4 2h4v20H4V2zm6 4h4v16h-4V6zm6 6h4v10h-4V12z"/></svg>' },
+      { name: 'NumPy', use: 'Matrix operations & multi-dimensional array math', icon: '<i class="fas fa-calculator" style="color: #6366f1;"></i>' },
+      { name: 'SQL / Databases', use: 'Aggregating records & optimization queries', icon: '<i class="fas fa-database" style="color: #10b981;"></i>' }
     ],
-    web: [
-      { name: 'React', icon: '<i class="fab fa-react" style="color: #14b8a6;"></i>' },
-      { name: 'Tailwind', icon: '<svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" style="color: #0ea5e9;"><path d="M12.001 4.8c-3.2 0-5.2 1.6-6 4.8 1.2-1.6 2.6-2.2 4.2-1.8.913.228 1.565.89 2.288 1.624C13.666 10.618 15.027 12 18.001 12c3.2 0 5.2-1.6 6-4.8-1.2 1.6-2.6 2.2-4.2 1.8-.913-.228-1.565-.89-2.288-1.624C16.335 6.182 14.974 4.8 12.001 4.8zm-6 7.2c-3.2 0-5.2 1.6-6 4.8 1.2-1.6 2.6-2.2 4.2-1.8.913.228 1.565.89 2.288 1.624 1.177 1.194 2.538 2.576 5.512 2.576 3.2 0 5.2-1.6 6-4.8-1.2 1.6-2.6 2.2-4.2 1.8-.913-.228-1.565-.89-2.288-1.624C10.334 13.382 8.973 12 5.999 12z"/></svg>' },
-      { name: 'JavaScript', icon: '<i class="fab fa-js" style="color: #eab308;"></i>' },
-      { name: 'HTML', icon: '<i class="fab fa-html5" style="color: #f97316;"></i>' },
-      { name: 'CSS', icon: '<i class="fab fa-css3" style="color: #3b82f6;"></i>' }
+    modeling: [
+      { name: 'Scikit-learn', use: 'Evaluating classifier pipelines & regression models', icon: '<i class="fas fa-brain" style="color: #34d399;"></i>' },
+      { name: 'XGBoost', use: 'Building tree ensemble models on structured datasets', icon: '<i class="fas fa-bolt" style="color: #fbbf24;"></i>' },
+      { name: 'TensorFlow', use: 'Fitting sentiment classifier nets & sequence models', icon: '<i class="fas fa-network-wired" style="color: #f97316;"></i>' },
+      { name: 'PyTorch', use: 'Deep neural research & model tuning loops', icon: '<i class="fas fa-fire" style="color: #ef4444;"></i>' }
     ],
-    tools: [
-      { name: 'Git', icon: '<i class="fab fa-git-alt" style="color: #f05032;"></i>' },
-      { name: 'GitHub', icon: '<i class="fab fa-github" style="color: #f8fafc;"></i>' },
-      { name: 'VS Code', icon: '<svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" style="color: #007acc;"><path d="M23.984 6.302L18.423.82c-.378-.363-1.026-.172-1.026.335v3.136L5.59 13.916 2.112 10.9a.465.465 0 0 0-.7 0L.117 12.06c-.156.143-.156.402 0 .546l3.478 3.018-3.478 3.018c-.156.143-.156.402 0 .546l1.295 1.161c.195.176.505.176.7 0l3.478-3.018 11.807 9.625v3.136c0 .507.648.698 1.026.335l5.561-5.482a1.054 1.054 0 0 0 0-1.503L23.984 6.302zm-6.587 9.48l-6.02-4.526 6.02-4.526v9.052z"/></svg>' },
-      { name: 'Firebase', icon: '<svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" style="color: #ffca28;"><path d="M3.89 15.55L7.75 3.76a.55.55 0 0 1 1.05 0l2.12 6.48zm16.35-.49l-2.22-4.13a.55.55 0 0 0-.91 0l-3.32 6.19zm-7.6-3.83l-2.63-5.06a.55.55 0 0 0-.98 0L3.38 18.2a.55.55 0 0 0 .8.69l7.74-4.32a.55.55 0 0 0 0-.93z"/></svg>' },
-      { name: 'Figma', icon: '<i class="fab fa-figma" style="color: #a259ff;"></i>' }
+    deployment: [
+      { name: 'FastAPI', use: 'Developing async prediction APIs for DevPulse', icon: '<i class="fas fa-bolt" style="color: #0ea5e9;"></i>' },
+      { name: 'Flask', use: 'Serving ML models via simple web endpoints', icon: '<i class="fas fa-flask" style="color: #f8fafc;"></i>' },
+      { name: 'Git & GitHub', use: 'Managing repository versions & CI/CD workflow hooks', icon: '<i class="fab fa-github" style="color: #f8fafc;"></i>' }
+    ],
+    interface: [
+      { name: 'React.js', use: 'Building the DevPulse interactive analytics dashboard', icon: '<i class="fab fa-react" style="color: #14b8a6;"></i>' },
+      { name: 'Streamlit', use: 'Coding interactive AI reviewer & threat detection interfaces', icon: '<i class="fas fa-chart-line" style="color: #ff4b4b;"></i>' },
+      { name: 'Tailwind CSS', use: 'Styling dashboard interfaces with fluid layouts', icon: '<i class="fab fa-css3" style="color: #38bdf8;"></i>' },
+      { name: 'Figma', use: 'Mapping user flows & high-fidelity prototype layouts', icon: '<i class="fab fa-figma" style="color: #a259ff;"></i>' }
     ]
   };
 
-  const positionsMap = {
-    web: { top: 'tools', center: 'web', bottom: 'ds' },
-    ds: { top: 'web', center: 'ds', bottom: 'tools' },
-    tools: { top: 'ds', center: 'tools', bottom: 'web' }
-  };
+  // Dynamically draw an animated canvas background inside cards on hover
+  function drawCardSparkline(canvas) {
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    let width = canvas.width = 140;
+    let height = canvas.height = 45;
+    let points = [];
+    for (let i = 0; i <= 6; i++) {
+      points.push({
+        x: (width / 6) * i,
+        y: height - (Math.random() * (height - 10) + 5)
+      });
+    }
 
-  function renderSkills(categoryId) {
-    skillsRight.innerHTML = '';
-    const skills = skillsData[categoryId];
+    let offset = 0;
+    let animId;
+
+    function render() {
+      ctx.clearRect(0, 0, width, height);
+      ctx.beginPath();
+      ctx.strokeStyle = getComputedStyle(document.documentElement).getPropertyValue('--accent').trim() || '#C9A84C';
+      ctx.lineWidth = 1.5;
+      ctx.lineCap = 'round';
+      ctx.lineJoin = 'round';
+
+      ctx.moveTo(points[0].x, points[0].y + Math.sin(offset) * 4);
+      for (let i = 1; i < points.length; i++) {
+        const py = points[i].y + Math.sin(offset + i) * 3;
+        ctx.lineTo(points[i].x, py);
+      }
+      ctx.stroke();
+
+      offset += 0.04;
+      animId = requestAnimationFrame(render);
+    }
+    
+    canvas.addEventListener('mouseenter', () => {
+      render();
+    });
+    
+    canvas.addEventListener('mouseleave', () => {
+      cancelAnimationFrame(animId);
+      ctx.clearRect(0, 0, width, height);
+    });
+  }
+
+  function renderPane(stageId) {
+    displayPane.innerHTML = '';
+    const skills = pipelineData[stageId];
     if (!skills) return;
 
     skills.forEach((skill, index) => {
-      const item = document.createElement('div');
-      item.className = 'skill-list-item';
-      item.innerHTML = `
-        <div class="skill-item-icon">${skill.icon}</div>
-        <div class="skill-item-name">${skill.name}</div>
+      const card = document.createElement('div');
+      card.className = 'skill-flow-card';
+      
+      // Canvas background element
+      const hasGraph = stageId === 'modeling' || stageId === 'ingestion';
+      const graphHtml = hasGraph ? `<canvas class="skill-card-bg-graph"></canvas>` : '';
+
+      card.innerHTML = `
+        <div class="skill-card-main">
+          <div class="skill-card-icon">${skill.icon}</div>
+          <div class="skill-card-info">
+            <span class="skill-card-name">${skill.name}</span>
+            <span class="skill-card-use">${skill.use}</span>
+          </div>
+        </div>
+        ${graphHtml}
       `;
-      skillsRight.appendChild(item);
+      
+      displayPane.appendChild(card);
 
-      // Stagger fade-in
-      setTimeout(() => {
-        item.classList.add('show');
-      }, index * 60);
-    });
-  }
-
-  function setCategory(activeId) {
-    const layout = positionsMap[activeId];
-    if (!layout) return;
-
-    nodes.forEach(node => {
-      const id = node.dataset.id;
-      node.className = 'orbit-node'; // Reset
-
-      if (id === layout.center) {
-        node.classList.add('pos-center');
-      } else if (id === layout.top) {
-        node.classList.add('pos-top');
-      } else if (id === layout.bottom) {
-        node.classList.add('pos-bottom');
+      if (hasGraph) {
+        const cv = card.querySelector('.skill-card-bg-graph');
+        drawCardSparkline(cv);
       }
-    });
 
-    renderSkills(activeId);
+      // Stagger fade-in transition
+      setTimeout(() => {
+        card.classList.add('show');
+      }, index * 75);
+    });
   }
 
-  // Click listener
-  nodes.forEach(node => {
-    node.addEventListener('click', () => {
-      const id = node.dataset.id;
-      setCategory(id);
+  function updateActiveStage(selectedStage) {
+    stages.forEach(stage => {
+      stage.classList.toggle('active', stage === selectedStage);
+    });
+
+    // Move the glowing dot along the vertical track (approx positions)
+    const stageIndex = Array.from(stages).indexOf(selectedStage);
+    const totalStages = stages.length;
+    
+    // Only adjust dot position if track exists on desktop screens
+    if (window.innerWidth > 900) {
+      const percent = (stageIndex / (totalStages - 1)) * 90; // range 0 to 90%
+      dot.style.top = `calc(${percent}% + 18px)`;
+    }
+
+    renderPane(selectedStage.dataset.id);
+  }
+
+  // Click events
+  stages.forEach(stage => {
+    stage.addEventListener('click', () => {
+      updateActiveStage(stage);
     });
   });
 
   // Default load
-  setCategory('ds');
+  updateActiveStage(stages[0]);
 })();
 
 console.log('✨ Portfolio loaded — Kundan V.');
@@ -970,3 +1027,141 @@ console.log('✨ Portfolio loaded — Kundan V.');
     return `I can help you learn more about Kundan's background. Try asking about his **projects** (like DevPulse), **certifications** (like the Google Cloud AI Agent badge), **skills**, or **contact info**!`;
   }
 })();
+
+// ─── Dynamic Particle Canvas & Accent Sync ────────────────────
+(function initParticles() {
+  // Dynamically inject canvas if not present
+  let canvas = document.getElementById('particle-canvas');
+  if (!canvas) {
+    canvas = document.createElement('canvas');
+    canvas.id = 'particle-canvas';
+    document.body.insertBefore(canvas, document.body.firstChild);
+  }
+
+  const ctx = canvas.getContext('2d');
+  let animationFrameId;
+
+  let particles = [];
+  const particleCount = Math.min(65, Math.floor((window.innerWidth * window.innerHeight) / 18000));
+  let mouse = { x: null, y: null, radius: 150 };
+
+  // Sync mouse position
+  window.addEventListener('mousemove', (e) => {
+    mouse.x = e.clientX;
+    mouse.y = e.clientY;
+  });
+
+  window.addEventListener('mouseleave', () => {
+    mouse.x = null;
+    mouse.y = null;
+  });
+
+  function resize() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+  window.addEventListener('resize', resize);
+  resize();
+
+  // Helper to fetch current accent color
+  function getAccentColor() {
+    const style = getComputedStyle(document.documentElement);
+    return style.getPropertyValue('--accent').trim() || '#C9A84C';
+  }
+
+  class Particle {
+    constructor() {
+      this.x = Math.random() * canvas.width;
+      this.y = Math.random() * canvas.height;
+      this.vx = (Math.random() - 0.5) * 0.45;
+      this.vy = (Math.random() - 0.5) * 0.45;
+      this.radius = Math.random() * 2 + 1;
+    }
+
+    update() {
+      this.x += this.vx;
+      this.y += this.vy;
+
+      // Bounce off bounds
+      if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
+      if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
+
+      // Mouse repulsion (butter smooth movement)
+      if (mouse.x !== null) {
+        const dx = this.x - mouse.x;
+        const dy = this.y - mouse.y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist < mouse.radius) {
+          const force = (mouse.radius - dist) / mouse.radius;
+          const angle = Math.atan2(dy, dx);
+          this.x += Math.cos(angle) * force * 1.5;
+          this.y += Math.sin(angle) * force * 1.5;
+        }
+      }
+    }
+
+    draw() {
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+      ctx.fillStyle = getAccentColor();
+      ctx.fill();
+    }
+  }
+
+  function init() {
+    particles = [];
+    for (let i = 0; i < particleCount; i++) {
+      particles.push(new Particle());
+    }
+  }
+
+  function animate() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    particles.forEach((p) => {
+      p.update();
+      p.draw();
+    });
+
+    // Draw connections
+    const accentColor = getAccentColor();
+    // Parse Hex to RGB to use alpha opacity safely
+    let r = 201, g = 168, b = 76;
+    if (accentColor.startsWith('#')) {
+      const hex = accentColor.substring(1);
+      if (hex.length === 6) {
+        r = parseInt(hex.substring(0, 2), 16);
+        g = parseInt(hex.substring(2, 4), 16);
+        b = parseInt(hex.substring(4, 6), 16);
+      }
+    }
+
+    for (let i = 0; i < particles.length; i++) {
+      for (let j = i + 1; j < particles.length; j++) {
+        const dx = particles[i].x - particles[j].x;
+        const dy = particles[i].y - particles[j].y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+
+        if (dist < 110) {
+          ctx.beginPath();
+          ctx.moveTo(particles[i].x, particles[i].y);
+          ctx.lineTo(particles[j].x, particles[j].y);
+          const alpha = (110 - dist) / 110 * 0.18;
+          ctx.strokeStyle = `rgba(${r}, ${g}, ${b}, ${alpha})`;
+          ctx.lineWidth = 0.8;
+          ctx.stroke();
+        }
+      }
+    }
+
+    animationFrameId = requestAnimationFrame(animate);
+  }
+
+  init();
+  animate();
+})();
+
+// Add global CSS class jitter-hover to project tags or menu items
+document.querySelectorAll('.proj-badge, .logo-avatar, .stat-chip').forEach(el => {
+  el.classList.add('jitter-hover');
+});

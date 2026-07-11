@@ -622,37 +622,56 @@
           <p class="section-sub">Built through workshops, coursework, projects, and real internship experience across data science disciplines.</p>
         </div>
 
-        <div class="skills-container">
-          <!-- Left Column: Interactive Orbital Menu -->
-          <div class="skills-left reveal">
-            <div class="orbital-menu">
-              <!-- Curved dotted line -->
-              <svg class="orbital-svg" viewBox="0 0 200 400">
-                <path d="M 50,0 Q 150,200 50,400" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="2" stroke-dasharray="6,6" />
-              </svg>
+        <div class="skills-container pipeline-layout">
+          <!-- Left Column: Interactive Pipeline Flowchart -->
+          <div class="pipeline-flow reveal">
+            <div class="pipeline-track-line">
+              <div class="pipeline-glowing-dot" id="pipelineDot"></div>
+            </div>
 
-              <!-- Web Dev Node -->
-              <div class="orbit-node pos-top" data-id="web">
-                <div class="node-icon"><i class="fas fa-code"></i></div>
-                <span class="node-label">Web Development</span>
+            <!-- Stage 1 -->
+            <div class="pipeline-stage active" data-id="ingestion">
+              <div class="stage-num">01</div>
+              <div class="stage-icon"><i class="fas fa-database"></i></div>
+              <div class="stage-details">
+                <span class="stage-title">Data Prep &amp; Analysis</span>
+                <span class="stage-desc">Cleaning, profiling, and query engineering</span>
               </div>
+            </div>
 
-              <!-- Data Science & ML Node (Default center) -->
-              <div class="orbit-node pos-center" data-id="ds">
-                <div class="node-icon"><i class="fas fa-brain"></i></div>
-                <span class="node-label">Data Science &amp; ML</span>
+            <!-- Stage 2 -->
+            <div class="pipeline-stage" data-id="modeling">
+              <div class="stage-num">02</div>
+              <div class="stage-icon"><i class="fas fa-brain"></i></div>
+              <div class="stage-details">
+                <span class="stage-title">Machine Learning &amp; AI</span>
+                <span class="stage-desc">Supervised classification, features, and deep nets</span>
               </div>
+            </div>
 
-              <!-- Tools & Design Node -->
-              <div class="orbit-node pos-bottom" data-id="tools">
-                <div class="node-icon"><i class="fas fa-wrench"></i></div>
-                <span class="node-label">Tools &amp; Design</span>
+            <!-- Stage 3 -->
+            <div class="pipeline-stage" data-id="deployment">
+              <div class="stage-num">03</div>
+              <div class="stage-icon"><i class="fas fa-server"></i></div>
+              <div class="stage-details">
+                <span class="stage-title">APIs &amp; Backends</span>
+                <span class="stage-desc">Building REST systems &amp; automation engines</span>
+              </div>
+            </div>
+
+            <!-- Stage 4 -->
+            <div class="pipeline-stage" data-id="interface">
+              <div class="stage-num">04</div>
+              <div class="stage-icon"><i class="fas fa-desktop"></i></div>
+              <div class="stage-details">
+                <span class="stage-title">Dashboards &amp; UIs</span>
+                <span class="stage-desc">Designing live analytics &amp; frontend tools</span>
               </div>
             </div>
           </div>
 
-          <!-- Right Column: Skills List Pane -->
-          <div class="skills-right reveal reveal-d1">
+          <!-- Right Column: Pipeline Skills Pane -->
+          <div class="pipeline-display-pane reveal reveal-d1" id="pipelineSkillsPane">
             <!-- Dynamically populated by JS -->
           </div>
         </div>

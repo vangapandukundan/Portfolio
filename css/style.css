@@ -1432,252 +1432,258 @@ body.touch-device #cursor-dot {
   .footer-logo { font-size: 0.95rem; }
 }
 
-/* ─── Interactive Skills Section ────────────────────────────── */
-.skills-container {
+/* ─── Pipeline Skills Section ───────────────────────────────── */
+.pipeline-layout {
   display: grid;
-  grid-template-columns: 1fr 1.2fr;
-  gap: 80px;
-  align-items: center;
+  grid-template-columns: 1fr 1.1fr;
+  gap: 60px;
   margin-top: 50px;
-  min-height: 480px;
+  align-items: stretch;
 }
 
-.skills-left {
+.pipeline-flow {
+  position: relative;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  height: 450px;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20px 0;
+  gap: 24px;
 }
 
-.orbital-menu {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  max-width: 380px;
-}
-
-.orbital-svg {
+.pipeline-track-line {
   position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
+  left: 40px;
+  top: 40px;
+  bottom: 40px;
+  width: 2px;
+  background: rgba(255, 255, 255, 0.06);
   z-index: 1;
 }
 
-.orbit-node {
+.pipeline-glowing-dot {
   position: absolute;
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  cursor: pointer;
-  z-index: 5;
-  transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
-  opacity: 0.35;
-  transform: scale(0.85);
-}
-
-.orbit-node:hover {
-  opacity: 0.8;
-}
-
-.node-icon {
-  width: 48px;
-  height: 48px;
+  left: 50%;
+  transform: translate(-50%, 0);
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
-  border: 1.5px solid var(--border);
-  background: var(--bg-card);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.1rem;
-  color: var(--text-2);
-  transition: all 0.4s var(--ease);
-  box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.02);
+  background: var(--accent);
+  box-shadow: 0 0 14px var(--accent), 0 0 28px var(--accent);
+  transition: top 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 2;
+  top: 18px; /* modified dynamically by JS */
 }
 
-.node-label {
-  font-size: 0.85rem;
-  font-weight: 700;
-  color: var(--text-3);
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  transition: all 0.4s var(--ease);
-  white-space: nowrap;
-}
-
-/* Active Node State */
-.orbit-node.pos-center {
-  opacity: 1;
-  transform: translateY(-50%) scale(1.15);
-  z-index: 10;
-}
-
-.orbit-node.pos-center .node-icon {
-  background: var(--purple);
-  border-color: var(--purple);
-  color: var(--white);
-  box-shadow: 0 0 30px rgba(99, 102, 241, 0.6);
-}
-
-.orbit-node.pos-center .node-label {
-  color: var(--white);
-  text-shadow: 0 0 15px rgba(255, 255, 255, 0.15);
-}
-
-.orbit-node.pos-center .node-label::after {
-  content: ' ◀';
-  display: inline-block;
-  color: var(--purple);
-  font-size: 0.75rem;
-  margin-left: 8px;
-  animation: bounce-horizontal 1.5s ease infinite;
-}
-
-@keyframes bounce-horizontal {
-  0%, 100% { transform: translateX(0); }
-  50% { transform: translateX(4px); }
-}
-
-/* Position States for Orbital Menu */
-.orbit-node.pos-top {
-  top: 10%;
-  left: 60px;
-}
-
-.orbit-node.pos-center {
-  top: 50%;
-  left: 120px;
-}
-
-.orbit-node.pos-bottom {
-  top: 90%;
-  left: 60px;
-  transform: translateY(-100%) scale(0.85);
-}
-
-.orbit-node.pos-bottom.pos-center {
-  transform: translateY(-50%) scale(1.15);
-}
-
-/* Right side list */
-.skills-right {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-}
-
-.skill-list-item {
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: 100px;
-  padding: 14px 24px;
+.pipeline-stage {
+  position: relative;
   display: flex;
   align-items: center;
   gap: 20px;
-  transition: all 0.35s var(--ease);
-  opacity: 0;
-  transform: translateX(20px);
+  cursor: pointer;
+  z-index: 3;
+  padding: 14px 20px;
+  border-radius: var(--radius);
+  background: rgba(13, 18, 32, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.02);
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.skill-list-item.show {
-  opacity: 1;
-  transform: translateX(0);
+.stage-num {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.15rem;
+  color: var(--text-3);
+  width: 24px;
+  text-align: center;
+  transition: color 0.3s;
 }
 
-.skill-list-item:hover {
-  border-color: rgba(99, 102, 241, 0.28);
-  transform: translateX(8px);
-  background: rgba(99, 102, 241, 0.04);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3), 0 0 1px rgba(99, 102, 241, 0.2);
-}
-
-.skill-item-icon {
-  width: 42px;
-  height: 42px;
+.stage-icon {
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
-  background: var(--bg-card2);
-  border: 1px solid var(--border-2);
+  background: var(--bg-card);
+  border: 1.5px solid var(--border);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.1rem;
-  color: var(--white);
-  transition: transform 0.3s var(--ease);
+  font-size: 1rem;
+  color: var(--text-2);
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: inset 0 0 8px rgba(255,255,255,0.01);
   flex-shrink: 0;
 }
 
-.skill-list-item:hover .skill-item-icon {
-  transform: rotate(8deg) scale(1.1);
-  border-color: rgba(99, 102, 241, 0.4);
+.stage-details {
+  display: flex;
+  flex-direction: column;
 }
 
-.skill-item-name {
+.stage-title {
   font-size: 0.95rem;
-  font-weight: 600;
-  color: var(--text);
-  letter-spacing: 0.02em;
+  font-weight: 700;
+  color: var(--text-2);
+  transition: color 0.3s;
 }
 
-/* Responsive adjustment */
-@media (max-width: 820px) {
-  .skills-container {
+.stage-desc {
+  font-size: 0.76rem;
+  color: var(--text-3);
+  transition: color 0.3s;
+}
+
+/* Active & Hover States */
+.pipeline-stage:hover .stage-icon {
+  color: var(--accent);
+  border-color: rgba(201, 168, 76, 0.35);
+  box-shadow: 0 0 15px rgba(201, 168, 76, 0.08);
+}
+
+.pipeline-stage.active {
+  background: rgba(255, 255, 255, 0.03);
+  border-color: var(--border);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.pipeline-stage.active .stage-num {
+  color: var(--accent);
+}
+
+.pipeline-stage.active .stage-icon {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #080C14;
+  box-shadow: 0 0 20px var(--accent-glow);
+}
+
+.pipeline-stage.active .stage-title {
+  color: var(--white);
+}
+
+.pipeline-stage.active .stage-desc {
+  color: var(--text-2);
+}
+
+/* Display Pane cards styling */
+.pipeline-display-pane {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  justify-content: center;
+}
+
+/* Skill Cards inside Pane */
+.skill-flow-card {
+  position: relative;
+  background: rgba(13, 18, 32, 0.5) !important;
+  backdrop-filter: blur(16px) saturate(1.2);
+  -webkit-backdrop-filter: blur(16px) saturate(1.2);
+  border: 1px solid rgba(255, 255, 255, 0.05) !important;
+  border-radius: var(--radius);
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  overflow: hidden;
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  opacity: 0;
+  transform: translateY(16px);
+}
+
+.skill-flow-card.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.skill-flow-card:hover {
+  transform: translateY(-3px) !important;
+  border-color: rgba(201, 168, 76, 0.35) !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3), 0 0 15px var(--accent-glow) !important;
+}
+
+.skill-card-main {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  position: relative;
+  z-index: 2;
+}
+
+.skill-card-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: rgba(255,255,255,0.02);
+  border: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.15rem;
+  color: var(--white);
+  transition: transform 0.3s;
+}
+
+.skill-flow-card:hover .skill-card-icon {
+  transform: scale(1.1) rotate(5deg);
+}
+
+.skill-card-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.skill-card-name {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--white);
+}
+
+.skill-card-use {
+  font-size: 0.72rem;
+  color: var(--text-2);
+  margin-top: 2px;
+}
+
+/* Background animated line graph inside ML cards */
+.skill-card-bg-graph {
+  position: absolute;
+  right: 20px;
+  bottom: 0;
+  height: 45px;
+  width: 140px;
+  opacity: 0.12;
+  pointer-events: none;
+  z-index: 1;
+  transition: opacity 0.3s;
+}
+
+.skill-flow-card:hover .skill-card-bg-graph {
+  opacity: 0.28;
+}
+
+/* Responsive adjustments */
+@media (max-width: 900px) {
+  .pipeline-layout {
     grid-template-columns: 1fr;
-    gap: 40px;
+    gap: 28px;
   }
   
-  .skills-left {
-    height: auto;
+  .pipeline-flow {
+    padding: 10px 0;
+    gap: 12px;
   }
-  
-  .orbital-menu {
-    max-width: 100%;
-    height: auto;
-    display: flex;
-    justify-content: center;
-    gap: 16px;
-    flex-wrap: wrap;
-  }
-  
-  .orbital-svg {
+
+  .pipeline-track-line {
     display: none;
   }
   
-  .orbit-node {
-    position: static !important;
-    opacity: 0.5;
-    transform: none !important;
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    border-radius: 100px;
-    padding: 8px 18px;
-    gap: 10px;
+  .pipeline-stage {
+    background: rgba(13, 18, 32, 0.4) !important;
+    border: 1px solid var(--border) !important;
   }
-  
-  .orbit-node.pos-center {
-    opacity: 1;
-    border-color: var(--purple);
-    background: var(--purple-dim);
-    box-shadow: 0 4px 15px var(--purple-glow);
-  }
-  
-  .orbit-node.pos-center .node-icon {
-    background: transparent;
-    border: none;
-    box-shadow: none;
-    color: var(--purple);
-    width: 24px;
-    height: 24px;
-  }
-  
-  .orbit-node.pos-center .node-label {
-    color: var(--white);
-  }
-  
-  .orbit-node.pos-center .node-label::after {
-    display: none;
-  }
+}
+
 
   .node-icon {
     width: 24px;
@@ -2122,3 +2128,78 @@ body.touch-device #cursor-dot {
     bottom: 68px;
   }
 }
+
+/* ─── Particle Canvas ────────────────────────────────────────── */
+#particle-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+  pointer-events: none;
+  mix-blend-mode: screen;
+  opacity: 0.75;
+}
+
+/* Ensure content stays above canvas */
+main, section, header, footer, #ai-assistant {
+  position: relative;
+  z-index: 1;
+}
+
+/* ─── Butter Smooth Transitions & Interactive Glows ───────────── */
+.butter-transition {
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.proj-card, .pcard, .comp-card, .fact-item, .certifications-grid a, .btn-primary, .btn-ghost, .hire-btn {
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+/* Jitter Animation */
+@keyframes jitter-anim {
+  0% { transform: translate(0, 0) rotate(0deg); }
+  15% { transform: translate(-1.5px, 1px) rotate(-0.5deg); }
+  30% { transform: translate(1px, -1.5px) rotate(0.5deg); }
+  45% { transform: translate(-1.5px, -1px) rotate(-0.5deg); }
+  60% { transform: translate(1.5px, 1px) rotate(0.5deg); }
+  75% { transform: translate(-1px, 1.5px) rotate(-0.5deg); }
+  90% { transform: translate(1px, -1px) rotate(0.5deg); }
+  100% { transform: translate(0, 0) rotate(0deg); }
+}
+
+.jitter-hover:hover {
+  animation: jitter-anim 0.35s linear infinite;
+  color: var(--accent) !important;
+}
+
+/* Frosted glass upgrade for cards */
+.proj-card, .pcard, .comp-card, #ai-chat-window {
+  background: rgba(13, 18, 32, 0.5) !important;
+  backdrop-filter: blur(16px) saturate(1.2);
+  -webkit-backdrop-filter: blur(16px) saturate(1.2);
+  border: 1px solid rgba(255, 255, 255, 0.05) !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.proj-card:hover, .pcard:hover, .comp-card:hover {
+  border-color: rgba(201, 168, 76, 0.35) !important;
+  box-shadow: 0 15px 40px rgba(201, 168, 76, 0.08), 0 0 0 1px rgba(201, 168, 76, 0.15) !important;
+}
+
+/* Accent Glow for Custom Cursor */
+#cursor {
+  mix-blend-mode: difference;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+  border-width: 1.5px !important;
+}
+
+#cursor.hover {
+  mix-blend-mode: normal;
+  background: var(--accent-dim) !important;
+  box-shadow: 0 0 25px var(--accent-glow), inset 0 0 10px var(--accent-glow) !important;
+}
+
