@@ -8,18 +8,34 @@
 
   <!-- SEO & Social Meta Tags -->
   <meta name="description"
-    content="Portfolio of Vangapandu Kundan — 3rd Year B.Tech Data Science student specializing in Machine Learning, Python, and AI systems.">
+    content="Portfolio of Vangapandu Kundan — 4th Year B.Tech Data Science student specializing in Machine Learning, Python, and AI systems.">
   <meta property="og:title" content="Vangapandu Kundan | Data Scientist">
   <meta property="og:description"
     content="Explore my portfolio featuring predictive ML models, AI apps, and full-stack data science projects built for real-world impact.">
   <meta property="og:type" content="website">
-  <meta property="og:image" content="img/kundan_2.jpg">
+  <meta property="og:image" content="img/kundan_2.jpeg">
+  <meta name="author" content="Vangapandu Kundan">
 
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%23080C14'/><text y='.9em' font-size='58' x='50%25' text-anchor='middle' dy='0.08em' font-family='system-ui' font-weight='900' fill='%23C9A84C'>VK</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 
 <body>
+
+  <!-- ═══ PRELOADER WELCOME SCREEN ════════════════════════════════ -->
+  <div id="preloader">
+    <div class="preloader-inner">
+      <div class="preloader-avatar"><i class="fas fa-robot"></i></div>
+      <div class="preloader-pct" id="preloader-pct">00%</div>
+      <div class="preloader-bar">
+        <div class="preloader-progress" id="preloader-progress"></div>
+      </div>
+      <div class="preloader-status" id="preloader-status">Initializing...</div>
+    </div>
+  </div>
 
   <!-- ═══ CUSTOM CURSOR ═══════════════════════════════════════════ -->
   <div id="cursor"></div>
@@ -38,7 +54,7 @@
     <a href="#about">About</a>
     <a href="#contact">Contact</a>
     <a href="files/Vangapandu_Kundan_Resume.pdf" download
-      style="margin-top:20px; background:var(--purple); color:white; padding:13px 20px; border-radius:100px; text-align:center; font-weight:700;">
+      style="margin-top:20px; background:var(--accent); color:#080C14; padding:13px 20px; border-radius:100px; text-align:center; font-weight:700;">
       <i class="fas fa-download"></i> Download CV
     </a>
   </nav>
@@ -117,6 +133,14 @@
 <p class="hero-bio">
   I'm a data science student passionate about turning complex datasets into <strong>real, practical impact</strong>. Using Python and machine learning, I design and deploy everything from <strong>predictive analytics dashboards to intelligent AI agents</strong> that automate everyday workflows.
 </p>
+<div style="margin-top:24px; margin-bottom: 24px; opacity: 0.9;">
+  <svg width="140" height="40" viewBox="0 0 150 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M10 25 C 15 5, 25 5, 30 25 C 35 15, 45 35, 50 25 C 60 15, 75 15, 80 25 C 95 10, 110 10, 115 25 C 125 15, 135 15, 140 25" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="stroke-dasharray: 300; stroke-dashoffset: 300; animation: draw-sig 2.5s ease-out 0.5s forwards;"/>
+  </svg>
+  <style>
+    @keyframes draw-sig { to { stroke-dashoffset: 0; } }
+  </style>
+</div>
 
           <div class="hero-cta">
             <a href="projects.html" class="btn-primary" id="hero-work-btn">
@@ -199,10 +223,10 @@
           <span class="marquee-item"><i class="fas fa-flask"></i> Flask</span>
           <span class="marquee-item"><i class="fab fa-git-alt"></i> Git</span>
           <span class="marquee-item"><i class="fas fa-book"></i> Jupyter</span>
-          <span class="marquee-item"><i class="fas fa-chart-pie"></i> NoSql</span>
-          <span class="marquee-item"><i class="fas fa-chart-pie"></i> HTML</span>
-          <span class="marquee-item"><i class="fas fa-chart-pie"></i> Tailwind CSS</span>
-          <span class="marquee-item"><i class="fas fa-chart-pie"></i> JavaScript</span>
+          <span class="marquee-item"><i class="fas fa-database"></i> NoSQL</span>
+          <span class="marquee-item"><i class="fab fa-html5"></i> HTML</span>
+          <span class="marquee-item"><i class="fab fa-css3-alt"></i> Tailwind CSS</span>
+          <span class="marquee-item"><i class="fab fa-js"></i> JavaScript</span>
         </div>
       </div>
 
@@ -246,7 +270,7 @@
         <div class="projects-header reveal">
           <div>
             <div class="section-badge"><span class="dot"></span> The Work</div>
-            <h2 class="section-h">Projects Build</h2>
+            <h2 class="section-h">Projects Built</h2>
             <p class="section-sub">ML systems and data apps — built from research to deployed reality.</p>
           </div>
           <div class="filter-tabs" id="filterTabs">
@@ -496,7 +520,7 @@
         <div class="reveal">
           <div class="section-badge"><span class="dot"></span> Kundan Achievements</div>
           <h2 class="section-h">Certifications</h2>
-          <p class="section-sub">Professional credentials and job simulations .</p>
+          <p class="section-sub">Professional credentials and job simulations.</p>
         </div>
 
         <div class="certifications-grid"
@@ -524,7 +548,7 @@
                 <span class="proj-type">Google · Coursera</span>
                 <span class="proj-year">2025</span>
               </div>
-              <h3 class="proj-title" style="font-size: 1.3rem;"> Data Analytics Certificate</h3>
+              <h3 class="proj-title" style="font-size: 1.3rem;">Data Analytics Certificate</h3>
               <p class="proj-desc" style="margin-bottom: 0;">Course Certificate</p>
             </div>
           </a>
@@ -569,7 +593,7 @@
           </a>
 
           <!-- Cert 6: Data Analytics Simulation -->
-          <a href="https://drive.google.com/file/d/1irQkvL0rqNXB9kUWPRGwH6m6DORXcWvZ/view?usp=sharing" target="_blank"
+          <a href="certificates/Deloitte job simulation.pdf" target="_blank"
             class="proj-card reveal reveal-d1" style="text-decoration: none; color: inherit; display: block;">
             <div class="proj-body" style="padding: 32px 24px;">
               <div class="proj-meta">
@@ -603,7 +627,7 @@
                 <span class="proj-year">2026</span>
               </div>
               <h3 class="proj-title" style="font-size: 1.3rem;">Engineer AI Agent with Development kit </h3>
-              <p class="proj-desc" style="margin-bottom: 0;">skill batch</p>
+              <p class="proj-desc" style="margin-bottom: 0;">Skill Badge</p>
             </div>
           </a>
         </div>
@@ -709,7 +733,7 @@
               complex data understandable and actionable.
             </p>
             <p class="about-text">
-              Outside the terminal, I'm into sports like<strong>batminton</strong>,
+              Outside the terminal, I'm into sports like <strong>badminton</strong>,
               <strong>Indoor games</strong>, <strong>trekking</strong> and <strong>Online Games</strong>. I speak <strong>English</strong> and <strong>Telugu </strong>.
             </p>
 
@@ -770,8 +794,7 @@
           <div class="contact-info-card reveal">
             <h3 class="contact-info-title">Let's work together</h3>
             <p class="contact-info-text">
-              If you have any project ideas in mind, want to discuss ML, or just want to say hello — fill the form 
-              my inbox is always open. I typically respond within 24 hours.
+              If you have any project ideas in mind, want to discuss ML, or just want to say hello — my inbox is always open. I typically respond within 24 hours.
             </p>
 
             <div class="cinfo-items">
@@ -787,7 +810,7 @@
                 <div class="cinfo-icon"><i class="fas fa-phone"></i></div>
                 <div>
                   <div class="cinfo-lbl">Phone</div>
-                  <div class="cinfo-val">+91 9492250166</div>
+                  <div class="cinfo-val"><a href="tel:+919492250166">+91 9492250166</a></div>
                 </div>
               </div>
               <div class="cinfo-item">
@@ -870,54 +893,62 @@
     </div>
   </footer>
 
-  <!-- ═══ KUNDAN-AI ASSISTANT ════════════════════════════════════ -->
+  <!-- AI Assistant — Animated Robot Character -->
   <div id="ai-assistant">
-    <!-- Float Button -->
-    <button id="ai-btn" aria-label="Open AI Assistant">
-      <i class="fas fa-robot"></i>
-      <span class="ai-badge">Ask Me</span>
-    </button>
+    <!-- Robot Character -->
+    <div id="ai-btn" role="button" tabindex="0" aria-label="Open AI Assistant">
+      <div class="robot-speech-bubble">Ask Me! 💬</div>
+      <div class="robot-inner">
+        <div class="robot-antenna"><div class="antenna-ball"></div></div>
+        <div class="robot-head">
+          <div class="robot-eye left"><div class="robot-pupil"></div></div>
+          <div class="robot-eye right"><div class="robot-pupil"></div></div>
+          <div class="robot-mouth"></div>
+        </div>
+        <div class="robot-body"><div class="robot-screen">VK</div></div>
+        <div class="robot-arm left"></div>
+        <div class="robot-arm right"></div>
+        <div class="robot-legs">
+          <div class="robot-leg left"></div>
+          <div class="robot-leg right"></div>
+        </div>
+      </div>
+      <div class="robot-shadow"></div>
+    </div>
 
     <!-- Chat Window -->
     <div id="ai-chat-window" class="hidden">
-      <!-- Header -->
       <div class="ai-header">
         <div class="ai-header-profile">
           <div class="ai-avatar"><i class="fas fa-robot"></i></div>
           <div>
             <div class="ai-name">Kundan AI</div>
-            <div class="ai-status"><span class="status-dot"></span> Online. </div>
+            <div class="ai-status"><span class="status-dot"></span> Online &amp; Ready</div>
           </div>
         </div>
         <button id="ai-close-btn" aria-label="Close Chat"><i class="fas fa-times"></i></button>
       </div>
-
-      <!-- Messages Body -->
       <div class="ai-body">
         <div class="ai-msg bot">
           <div class="ai-msg-content">
-            Hi! I'm Kundan AI, an assistant trained by Kundan's portfolio.<br><br>
-            I can help you about Portfolio:
+            Hey there! I'm Kundan's virtual helper. I'm here to save you from reading his whole resume—ask me about his favorite projects, internships, or what he builds in his free time! 🚀<br><br>
+            Here's what I can help with:
             <ul>
               <li>💻 Explore his projects (like <strong>DevPulse</strong>)</li>
               <li>⚡ Detail his skills &amp; tech stack</li>
               <li>🎓 Check out his certifications</li>
               <li>✉️ Find out how to get in touch</li>
             </ul>
-            How can I help you today?
+            What would you like to know?
           </div>
         </div>
       </div>
-
-      <!-- Quick Options -->
       <div class="ai-options">
         <button class="ai-opt" data-query="about">About Kundan</button>
         <button class="ai-opt" data-query="projects">Show Projects</button>
         <button class="ai-opt" data-query="skills">Technical Skills</button>
         <button class="ai-opt" data-query="contact">Get in Touch</button>
       </div>
-
-      <!-- Input Form -->
       <form id="ai-form">
         <input type="text" id="ai-input" placeholder="Type a message..." required autocomplete="off">
         <button type="submit" id="ai-send-btn" aria-label="Send Message" disabled><i class="fas fa-paper-plane"></i></button>

@@ -659,10 +659,25 @@ console.log('✨ Portfolio loaded — Kundan V.');
   if (!document.getElementById('ai-assistant')) {
     const aiHTML = `
       <div id="ai-assistant">
-        <button id="ai-btn" aria-label="Open AI Assistant">
-          <i class="fas fa-robot"></i>
-          <span class="ai-badge">Ask Me</span>
-        </button>
+        <div id="ai-btn" role="button" tabindex="0" aria-label="Open AI Assistant">
+          <div class="robot-speech-bubble">Ask Me! 💬</div>
+          <div class="robot-inner">
+            <div class="robot-antenna"><div class="antenna-ball"></div></div>
+            <div class="robot-head">
+              <div class="robot-eye left"><div class="robot-pupil"></div></div>
+              <div class="robot-eye right"><div class="robot-pupil"></div></div>
+              <div class="robot-mouth"></div>
+            </div>
+            <div class="robot-body"><div class="robot-screen">VK</div></div>
+            <div class="robot-arm left"></div>
+            <div class="robot-arm right"></div>
+            <div class="robot-legs">
+              <div class="robot-leg left"></div>
+              <div class="robot-leg right"></div>
+            </div>
+          </div>
+          <div class="robot-shadow"></div>
+        </div>
         <div id="ai-chat-window" class="hidden">
           <div class="ai-header">
             <div class="ai-header-profile">
@@ -718,17 +733,30 @@ console.log('✨ Portfolio loaded — Kundan V.');
   // Initialize button state
   sendBtn.disabled = true;
 
+  // Robot Animation State Functions
+  function sitDown() {
+    aiBtn.classList.add('sitting');
+  }
+
+  function standUp() {
+    aiBtn.classList.remove('sitting');
+  }
+
   // Toggle chat window
-  aiBtn.addEventListener('click', () => {
+  aiBtn.addEventListener('click', (e) => {
     chatWindow.classList.toggle('hidden');
     if (!chatWindow.classList.contains('hidden')) {
       chatInput.focus();
       scrollToBottom();
+      sitDown();
+    } else {
+      standUp();
     }
   });
 
   closeBtn.addEventListener('click', () => {
     chatWindow.classList.add('hidden');
+    standUp();
   });
 
   // Enable/disable send button
@@ -960,19 +988,18 @@ console.log('✨ Portfolio loaded — Kundan V.');
 
     // 4. ABOUT ME, RESUME, LOCATION, EDUCATION
     if (q.includes('school') || q.includes('college') || q.includes('university') || q.includes('gitam') || q.includes('education') || q.includes('study')) {
-      return `Kundan's educational background:<br>
-      - 🎓 <strong>B.Tech in Computer Science (Data Science)</strong>: GITAM University, Hyderabad (2023 - 2027) - Currently Enrolled.
-      - 🏫 <strong>Intermediate (MPC)</strong>: Sri Chaitanya Bhaskar Bhavan, Vijayawada (2021 - 2023).
-      - 🏫 <strong>High School (CBSE)</strong>: Nalanda Vidya Nikethan, Vijayawada (2016 - 2021).`;
+      return `Kundan is currently a 4th-year B.Tech Student in Computer Science (Data Science) at GITAM University, Hyderabad, graduating in 2027. 🎓<br><br>
+      Before that, he completed his Intermediate at Sri Chaitanya Bhaskar Bhavan and high school at Nalanda Vidya Nikethan.`;
     }
     if (q.includes('intern') || q.includes('experience') || q.includes('job') || q.includes('work experience')) {
-      return `Kundan has completed 2 internships:<br>
-      - 💼 <strong>Data Science Intern at Intrainz</strong> (2025): Feature pipelines, exploratory data analysis, predictive modeling.
-      - 💼 <strong>Python Developer Intern at Elevate Labs</strong> (2025): Code review automation tools, backend Python scripting, dashboard deployment.`;
+      return `Kundan just wrapped up three great internships in 2025:<br>
+      - 💼 <strong>Data Science Intern @ Intrainz</strong>: He built feature pipelines and optimized predictive models.<br>
+      - 💼 <strong>Python Developer Intern @ Elevate Labs</strong>: He created automated code review tools and backend validation scripts.<br>
+      - 💼 <strong>Web Developer Intern @ VBLP Tech Solutions</strong>: He focused on front-end development and building responsive UIs.`;
     }
     if (q.includes('about') || q.includes('kundan') || q.includes('who is') || q.includes('resume') || q.includes('bio') || q.includes('background')) {
-      return `<strong>Vangapandu Kundan</strong> is a 3rd-year B.Tech Student in Computer Science (Data Science) at GITAM University, Hyderabad.<br><br>
-      He builds intelligent, data-driven solutions using Machine Learning and Python, with a strong focus on developer tools and systems automation. Outside of software development, he enjoys photography and video editing. He speaks English and Telugu.`;
+      return `<strong>Vangapandu Kundan</strong> is a data science enthusiast and developer who loves turning complex data into real-world impact.<br><br>
+      He specializes in Machine Learning and Python, building everything from prediction dashboards to AI tools like DevPulse. When he isn't coding, he's probably out taking photos or editing videos. 📸`;
     }
     if (q.includes('location') || q.includes('live') || q.includes('hyderabad') || q.includes('where is')) {
       return `Kundan is based in <strong>KPHB, Hyderabad, Telangana, India</strong> and is open to remote opportunities worldwide.`;
@@ -1075,7 +1102,7 @@ console.log('✨ Portfolio loaded — Kundan V.');
       this.y = Math.random() * canvas.height;
       this.vx = (Math.random() - 0.5) * 0.45;
       this.vy = (Math.random() - 0.5) * 0.45;
-      this.radius = Math.random() * 2 + 1;
+      this.radius = Math.random() * 2.5 + 1.2;
     }
 
     update() {
@@ -1142,13 +1169,13 @@ console.log('✨ Portfolio loaded — Kundan V.');
         const dy = particles[i].y - particles[j].y;
         const dist = Math.sqrt(dx * dx + dy * dy);
 
-        if (dist < 110) {
+        if (dist < 130) {
           ctx.beginPath();
           ctx.moveTo(particles[i].x, particles[i].y);
           ctx.lineTo(particles[j].x, particles[j].y);
-          const alpha = (110 - dist) / 110 * 0.18;
+          const alpha = (130 - dist) / 130 * 0.35;
           ctx.strokeStyle = `rgba(${r}, ${g}, ${b}, ${alpha})`;
-          ctx.lineWidth = 0.8;
+          ctx.lineWidth = 1;
           ctx.stroke();
         }
       }
@@ -1165,3 +1192,57 @@ console.log('✨ Portfolio loaded — Kundan V.');
 document.querySelectorAll('.proj-badge, .logo-avatar, .stat-chip').forEach(el => {
   el.classList.add('jitter-hover');
 });
+
+// ─── Preloader Welcome Screen Controller ────────────────────────
+(function initPreloader() {
+  const preloader = document.getElementById('preloader');
+  const pctEl     = document.getElementById('preloader-pct');
+  const barEl     = document.getElementById('preloader-progress');
+  const statusEl  = document.getElementById('preloader-status');
+  if (!preloader || !pctEl || !barEl || !statusEl) return;
+
+  // Prevent scrollbar on page load
+  document.body.style.overflow = 'hidden';
+
+  const statuses = [
+    { limit: 20,  text: 'Importing intelligence...' },
+    { limit: 45,  text: 'Preparing datasets...' },
+    { limit: 70,  text: 'Fine-tuning models...' },
+    { limit: 90,  text: 'Formatting dashboard...' },
+    { limit: 100, text: 'Almost ready...' }
+  ];
+
+  let count = 0;
+  const duration = 1800; // total preloader count time in ms
+  const interval = 16;   // update tick rate
+  const step = 100 / (duration / interval);
+
+  const timer = setInterval(() => {
+    count += step;
+    if (count >= 100) {
+      count = 100;
+      clearInterval(timer);
+      
+      // Update UI to completed state
+      pctEl.textContent = '100%';
+      barEl.style.width = '100%';
+      statusEl.textContent = 'Welcome!';
+      
+      // Smooth fade-out transition
+      setTimeout(() => {
+        preloader.classList.add('fade-out');
+        document.body.style.overflow = ''; // unlock scrollbars
+      }, 350);
+    } else {
+      const rounded = Math.floor(count);
+      pctEl.textContent = (rounded < 10 ? '0' : '') + rounded + '%';
+      barEl.style.width = rounded + '%';
+
+      // Update current text status dynamically
+      const current = statuses.find(s => rounded <= s.limit);
+      if (current) {
+        statusEl.textContent = current.text;
+      }
+    }
+  }, interval);
+})();
