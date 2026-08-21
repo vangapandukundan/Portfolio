@@ -554,7 +554,7 @@
           </a>
 
           <!-- cert 3 python-->
-          <a href="https://drive.google.com/file/d/1eZ3j85PAicDU8UP25I_w2NIdBDDTiY0W/view?usp=sharing"
+          <a href="https://drive.google.com/file/d/1eZ3j85PAicDU8UP25I_w2NIdBDDTiY0W/view?usp=sharing" target="_blank"
             class="proj-card reveal reveal-d5" style="text-decoration: none; color: inherit; display: block;">
             <div class="proj-body" style="padding: 32px 24px;">
               <div class="proj-meta">
@@ -727,14 +727,14 @@
               I'm deeply passionate about the intersection of data, intelligence, and engineering.
             </p>
             <p class="about-text">
-              I've completed internships at <strong>Intraniz</strong> (Data Science),
-              <strong>Elevate Labs</strong> (Python Developer), <strong>Vblp Tech Solutions</strong>(Web Development) and hold certifications from
+              I've completed internships at <strong>Intrainz</strong> (Data Science),
+              <strong>Elevate Labs</strong> (Python Developer), <strong>Vblp Tech Solutions</strong> (Web Development) and hold certifications from
               <strong>IBM, Coursera, and Deloitte</strong>. I love building things that make
               complex data understandable and actionable.
             </p>
             <p class="about-text">
-              Outside the terminal, I'm into sports like <strong>badminton</strong>,
-              <strong>Indoor games</strong>, <strong>trekking</strong> and <strong>Online Games</strong>. I speak <strong>English</strong> and <strong>Telugu </strong>.
+              Outside the terminal, I'm into sports like <strong>Badminton</strong>,
+              <strong>Indoor games</strong>, <strong>Trekking</strong> and <strong>Online games</strong>. I speak <strong>English</strong> and <strong>Telugu</strong>.
             </p>
 
             <div class="about-facts">
@@ -891,6 +891,10 @@
       <a href="#skills">Skills</a>
       <a href="#contact">Contact</a>
     </div>
+    <div class="footer-socials">
+      <a href="https://github.com/vangapandukundan" target="_blank" aria-label="GitHub" class="footer-social-btn"><i class="fab fa-github"></i></a>
+      <a href="https://www.linkedin.com/in/kundan-student" target="_blank" aria-label="LinkedIn" class="footer-social-btn"><i class="fab fa-linkedin"></i></a>
+    </div>
   </footer>
 
   <!-- AI Assistant — Animated Robot Character -->
@@ -898,6 +902,7 @@
     <!-- Robot Character -->
     <div id="ai-btn" role="button" tabindex="0" aria-label="Open AI Assistant">
       <div class="robot-speech-bubble">Ask Me! 💬</div>
+      <div class="robot-unread-badge" id="robot-unread-badge"></div>
       <div class="robot-inner">
         <div class="robot-antenna"><div class="antenna-ball"></div></div>
         <div class="robot-head">
@@ -918,7 +923,7 @@
 
     <!-- Chat Window -->
     <div id="ai-chat-window" class="hidden">
-      <div class="ai-header">
+      <div class="ai-header" id="ai-header">
         <div class="ai-header-profile">
           <div class="ai-avatar"><i class="fas fa-robot"></i></div>
           <div>
@@ -926,12 +931,21 @@
             <div class="ai-status"><span class="status-dot"></span> Online &amp; Ready</div>
           </div>
         </div>
-        <button id="ai-close-btn" aria-label="Close Chat"><i class="fas fa-times"></i></button>
+        <div class="ai-header-actions">
+          <button class="ai-hdr-btn" id="ai-clear-btn" title="Clear chat" aria-label="Clear chat history">
+            <i class="fas fa-trash-can"></i>
+          </button>
+          <button class="ai-hdr-btn" id="ai-minimize-btn" title="Minimize" aria-label="Minimize chat">
+            <i class="fas fa-minus"></i>
+          </button>
+          <button id="ai-close-btn" aria-label="Close Chat"><i class="fas fa-times"></i></button>
+        </div>
       </div>
-      <div class="ai-body">
+      <div class="ai-body" id="ai-body">
+        <div class="ai-date-divider"><span>Today</span></div>
         <div class="ai-msg bot">
           <div class="ai-msg-content">
-            Hey there! I'm Kundan's virtual helper. I'm here to save you from reading his whole resume—ask me about his favorite projects, internships, or what he builds in his free time! 🚀<br><br>
+            Hey there! I'm Kundan's virtual helper. Ask me anything about his projects, skills, or how to get in touch! 🚀<br><br>
             Here's what I can help with:
             <ul>
               <li>💻 Explore his projects (like <strong>DevPulse</strong>)</li>
@@ -941,16 +955,18 @@
             </ul>
             What would you like to know?
           </div>
+          <div class="ai-msg-time" id="ai-welcome-time"></div>
         </div>
       </div>
-      <div class="ai-options">
+      <div class="ai-options" id="ai-options">
         <button class="ai-opt" data-query="about">About Kundan</button>
         <button class="ai-opt" data-query="projects">Show Projects</button>
         <button class="ai-opt" data-query="skills">Technical Skills</button>
         <button class="ai-opt" data-query="contact">Get in Touch</button>
       </div>
+      <div class="ai-suggestions" id="ai-suggestions"></div>
       <form id="ai-form">
-        <input type="text" id="ai-input" placeholder="Type a message..." required autocomplete="off">
+        <input type="text" id="ai-input" placeholder="Ask me anything..." autocomplete="off" maxlength="200">
         <button type="submit" id="ai-send-btn" aria-label="Send Message" disabled><i class="fas fa-paper-plane"></i></button>
       </form>
     </div>
